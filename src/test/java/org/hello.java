@@ -1,6 +1,6 @@
-package org.item;
+package org;
 
-public class heloow {
+public class hello {
     public static void main(String[] args) {
         System.out.println("gg");
     }
