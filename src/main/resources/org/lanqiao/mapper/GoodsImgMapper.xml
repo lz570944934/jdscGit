@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.GoodsImgMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.GoodsImg" >
+    <id column="goodsImg_id" property="goodsimgId" jdbcType="INTEGER" />
+    <result column="goodsImg_url" property="goodsimgUrl" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodsImg_id, goodsImg_url, goods_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsimg
+    where goodsImg_id = #{goodsimgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsimg
+    where goodsImg_id = #{goodsimgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.GoodsImg" >
+    insert into goodsimg (goodsImg_id, goodsImg_url, goods_id
+      )
+    values (#{goodsimgId,jdbcType=INTEGER}, #{goodsimgUrl,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.GoodsImg" >
+    insert into goodsimg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsimgId != null" >
+        goodsImg_id,
+      </if>
+      <if test="goodsimgUrl != null" >
+        goodsImg_url,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsimgId != null" >
+        #{goodsimgId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsimgUrl != null" >
+        #{goodsimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.GoodsImg" >
+    update goodsimg
+    <set >
+      <if test="goodsimgUrl != null" >
+        goodsImg_url = #{goodsimgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goodsImg_id = #{goodsimgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.GoodsImg" >
+    update goodsimg
+    set goodsImg_url = #{goodsimgUrl,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER}
+    where goodsImg_id = #{goodsimgId,jdbcType=INTEGER}
+  </update>
+</mapper>

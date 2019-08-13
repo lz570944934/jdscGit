@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.GoodsStyleMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.GoodsStyle" >
+    <id column="goodsStyle_id" property="goodsstyleId" jdbcType="INTEGER" />
+    <result column="goodsStyle_content" property="goodsstyleContent" jdbcType="VARCHAR" />
+    <result column="goodsStyle_price" property="goodsstylePrice" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodsStyle_id, goodsStyle_content, goodsStyle_price, goods_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsstyle
+    where goodsStyle_id = #{goodsstyleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsstyle
+    where goodsStyle_id = #{goodsstyleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.GoodsStyle" >
+    insert into goodsstyle (goodsStyle_id, goodsStyle_content, 
+      goodsStyle_price, goods_id)
+    values (#{goodsstyleId,jdbcType=INTEGER}, #{goodsstyleContent,jdbcType=VARCHAR}, 
+      #{goodsstylePrice,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.GoodsStyle" >
+    insert into goodsstyle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsstyleId != null" >
+        goodsStyle_id,
+      </if>
+      <if test="goodsstyleContent != null" >
+        goodsStyle_content,
+      </if>
+      <if test="goodsstylePrice != null" >
+        goodsStyle_price,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsstyleId != null" >
+        #{goodsstyleId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsstyleContent != null" >
+        #{goodsstyleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsstylePrice != null" >
+        #{goodsstylePrice,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.GoodsStyle" >
+    update goodsstyle
+    <set >
+      <if test="goodsstyleContent != null" >
+        goodsStyle_content = #{goodsstyleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsstylePrice != null" >
+        goodsStyle_price = #{goodsstylePrice,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goodsStyle_id = #{goodsstyleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.GoodsStyle" >
+    update goodsstyle
+    set goodsStyle_content = #{goodsstyleContent,jdbcType=VARCHAR},
+      goodsStyle_price = #{goodsstylePrice,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER}
+    where goodsStyle_id = #{goodsstyleId,jdbcType=INTEGER}
+  </update>
+</mapper>

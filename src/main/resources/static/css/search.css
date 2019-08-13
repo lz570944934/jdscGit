@@ -1,0 +1,357 @@
+/*主体*/
+#body_border{
+    border: 1px solid black;
+    width: 1200px;
+    height: 1871px;
+    margin: auto;
+    margin-top: 10px;
+}
+#bread{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #1B518c;
+}
+#body1{
+    width: 1200px;
+    height: 230px;
+}
+#body1_1{
+    border-top: 1px solid #DDD;
+    width: 1200px;
+    height: 100px;
+    float:left;
+}
+#body1_1left{
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    background-color: #f3f3f3;
+    float:left;
+    line-height: 30px;
+    margin-right: 20px;
+}
+#body1_1right{
+    width: 1100px;
+    height: 100px;
+
+}
+#body1_1right ul{
+    margin-top: 8px;
+}
+#body1_1right li{
+    border: 1px solid #005aa0;
+}
+#body1_1more1{
+    border: 1px solid black;
+    width: 30px;
+    height: 20px;
+    float: right;
+    margin-top: -100px;
+    margin-right: 40px;
+    text-align: center;
+}
+#body1_1more2{
+    border: 1px solid black;
+    width: 30px;
+    height: 20px;
+    float: right;
+    margin-top: -100px;
+    text-align: center;
+}
+.body1_2{
+    border-top: 1px solid #DDD;
+    width: 1200px;
+    height: 30px;
+    float:left;
+}
+.body1_2left{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: #f3f3f3;
+    float:left;
+    line-height: 26px;
+    margin-right: 20px;
+}
+.body1_2right{
+    width: 1100px;
+    height: 100px;
+
+}
+.body1_2rignt a{
+    color: #005aa0;
+    line-height: 20px;
+}
+.body1_2rignt li{
+    width: 90px;
+    margin-right: 50px;
+    margin-top: 4px;
+    color: #005aa0;
+    cursor: pointer;
+}
+.body1_2rignt li:hover{
+    color: red;
+}
+.body1_2more{
+    border: 1px solid black;
+    width: 30px;
+    height: 20px;
+    float: right;
+    margin-top: 3px;
+    margin-right: 40px;
+    text-align: center;
+}
+#body1_3{
+    border-top: 1px solid #DDD;
+    width: 1200px;
+    height: 30px;
+    float:left;
+    border-bottom: 1px solid #DDD;
+}
+#body1_3left{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: #f3f3f3;
+    float:left;
+    line-height: 30px;
+    margin-right: 20px;
+}
+#body1_3right{
+    width: 1100px;
+    height: 30px;
+}
+#body1_3right li{
+    border: 1px solid  #005aa0;
+    width: 60px;
+    margin-top: 4px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+#body2{
+    border: 1px solid  black;
+    width: 1200px;
+    height: 1600px;
+    margin-top: 10px;
+}
+#body2left{
+    border: 1px solid #ddd;
+    width: 168px;
+    height: 100%;
+    float: left;
+}
+#body2left h3{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#guanggao{
+    float: right;
+    margin-right: 10px;
+    margin-top: -20px;
+}
+#body2left li{
+    width: 168px;
+    height: 260px;
+}
+#body2left li img{
+    margin-top: 5px;
+    margin-left: 3px;
+}
+#body2left li p{
+    margin-top: 6px;
+    margin-left: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.body2left_p{
+    color: red;
+    font-size: 14px;
+}
+#body2left li p span{
+    color: blue;
+}
+
+#body2right{
+    border: 1px solid  black;
+    width: 1020px;
+    height: 100%;
+    float: right;
+}
+#body2right_1{
+    border-top: 1px solid  #E7E3E7;
+    width: 100%;
+    height: 38px;
+    background-color: #F1F1F1;
+}
+#body2right_1 ul{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+#body2right_1 li{
+    border: 1px solid  black;
+    width: 60px;
+    height: 25px;
+    text-align: center;
+    line-height: 24px;
+}
+.body2right_1_red{
+    background-color: red;
+    color: #FFF;
+}
+.body2right_1_img{
+    float: right;
+    width: 7px;
+    height: 21px;
+    background: url("../images/sprite-arrow.png") no-repeat 0 -100px;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+.whiteimg{
+    background: url("../images/sprite-arrow.png") no-repeat 0 -119px;
+}
+#body2right_1 img{
+    margin-left: 15px;
+}
+
+#body2right_2{
+    border-bottom: 1px solid #E7E3E7;
+    width: 100%;
+    height: 38px;
+    background-color: #F9F9F9;
+}
+#body2right_2 span{
+    color: #999;
+    font-size: 14px;
+    margin-left: 12px;
+    line-height: 36px;
+}
+#body2right_2 ul{
+    margin-left: 210px;
+    margin-top: -25px;
+}
+#body2right_2 li{
+    width: 80px;
+    height: 25px;
+    cursor: pointer;
+}
+#body2right_2 li:hover{
+    color: red;
+}
+#body2right_2_search{
+    float: right;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+#body2right_3{
+    border: 1px solid  black;
+    width: 100%;
+    height: 1517px;
+}
+.body2right_3_shangpin{
+    border: 1px solid  black;
+    width: 24%;
+    height: 480px;
+    float: left;
+    margin-right: 4px;
+}
+.body2right_3_shangpin img{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.body2right_3_p{
+    color: red;
+    font-size: 20px;
+    margin-left: 10px;
+
+}
+.body2right_3_shangpin p{
+    margin-top: 6px;
+    margin-left: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.body2right_3_shangpin p span{
+    color: blue;
+}
+.body2right_3_shangpin p img{
+    line-height: 20px;
+    margin-top: 0px;
+}
+.body2right_3_shangpin ul{
+    margin-top: 20px;
+    margin-left: 12px;
+}
+.body2right_3_shangpin li{
+    border: 1px solid #ddd;
+    height: 30px;
+}
+#body2right_3_shangpin_gouwuche1{
+    margin-left: 4px;
+    margin-top: 6px;
+    background: url("../images/shangpinggouwuche.png") no-repeat 9999px 9999px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    float: left;
+    color: #999;
+}
+.body2right_3_shangpin ul li span{
+    padding-left: 5px;
+    height: 30px;
+    line-height: 28px;
+}
+#body2right_3_shangpin_gouwuche2{
+    margin-left: 4px;
+    margin-top: 7px;
+    background: url("../images/shangpinggouwuche.png")  9989px 996px;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    float: left;
+    color: #999;
+}
+#body2right_3_shangpin_gouwuche3{
+    margin-left: 4px;
+    margin-top: 4px;
+    background: url("../images/shangpinggouwuche.png")  9989px 1140px;
+    height: 21px;
+    width: 21px;
+    background-color: #fff;
+    float: left;
+    color: #999;
+}
+#body2right_3_zuihou{
+    border: 1px solid black;
+    height: 38px;
+    width: 100%;
+    clear: both;
+}
+#fenye{
+    float: right;
+    margin-top: 10px;
+}
+#fenye a{
+    text-decoration: none;
+    border:1px solid #ddd;
+    padding: 5px 7px;
+    color: #767675;
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+#fenye a:hover{
+    color: red;
+}
+#body2right_3_zuihou span{
+    margin-left: 10px;
+    margin-right: 10px;
+}

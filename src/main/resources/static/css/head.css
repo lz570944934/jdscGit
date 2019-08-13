@@ -1,0 +1,155 @@
+/*头部*/
+#head{
+    height: 170px;
+}
+#head_top1{
+    background-color: #e3e4e5;
+    height: 30px;
+}
+#head_top{
+    width: 1200px;
+    height: 30px;
+    margin: auto;
+}
+#head_top span{
+    float: left;
+    line-height: 28px;
+}
+#head_top_right{
+    line-height: 30px;
+}
+#head_top_right li{
+    float: right;
+    list-style: none;
+    margin-right: 25px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.head_top_right{
+    line-height: 20px;
+}
+.xian{
+    border-right: 1px solid bisque;
+    height: 20px;
+}
+.red_font{
+    color: red;
+}
+#head_bottom{
+    width: 1200px;
+    height: 138px;
+    margin: auto;
+}
+#head_bottom_left{
+    width: 190px;
+    height: 120px;
+    float: left;
+    cursor: pointer;
+    background-image: url("../images/jingdong.png");
+}
+#head_bottom_left:hover{
+    background-image: url("../images/jingdong1.gif");
+}
+#search{
+    width: 1008px;
+    height: 80px;
+    float: left;
+}
+#search1{
+    width: 550px;
+    height: 60px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+#search1_1{
+    border: 1px solid red;
+    width: 490px;
+    height: 33px;
+    float: left;
+}
+#search1_2 li{
+    margin-right: 11px;
+    cursor: pointer;
+}
+#key{
+    line-height: 20px;
+    margin-top: 5px;
+    border:none;
+}
+#search1 button{
+    border-radius: 0;
+    right: 0;
+    width: 58px;
+    height: 36px;
+    line-height: 32px;
+    border: none;
+    background-color: #e1251b;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    transition: background ease 0.2s;
+
+}
+#search2{
+    width: 120px;
+    height: 36px;
+    float: left;
+
+}
+#search2{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+#search2_1{
+    width: 16px;
+    height: 17px;
+    margin-top: 8px;
+    margin-left: 10px;
+    float: left;
+}
+#search2_1 .ci-count{
+    position: relative;
+    top: -26px;
+    left: 6px;
+    right: auto;
+    display: inline-block;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center;
+}
+#search2_2{
+    width: 60px;
+    height: 16px;
+    margin-top: 8px;
+    margin-left: 10px;
+    float: left;
+    color: red;
+}
+#search3{
+    width: 76px;
+    height: 76px;
+    float: right;
+    background-image: url("../images/jingdongerweima.png");
+    background-size: 76px 76px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#menu{
+    width: 1008px;
+    height: 56px;
+    float: left;
+}
+#menu li{
+    margin-left: 48px;
+    margin-top: 38px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+

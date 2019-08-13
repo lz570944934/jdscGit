@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.BrandMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Brand" >
+    <id column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="brand_note" property="brandNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    brand_id, brand_name, brand_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Brand" >
+    insert into brand (brand_id, brand_name, brand_note
+      )
+    values (#{brandId,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, #{brandNote,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Brand" >
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandNote != null" >
+        brand_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNote != null" >
+        #{brandNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Brand" >
+    update brand
+    <set >
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNote != null" >
+        brand_note = #{brandNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Brand" >
+    update brand
+    set brand_name = #{brandName,jdbcType=VARCHAR},
+      brand_note = #{brandNote,jdbcType=VARCHAR}
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东商城</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/head.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var scroH = $(this).scrollTop();
+                if(scroH>=300){
+                    $("#float_top").fadeIn(500);
+                }else{
+                    $("#float_top").fadeOut(500);
+                }
+            });
+            $(".body2_zhong_image img").hover(function () {
+                $(this).css("opacity","0.8");
+            },function () {
+                $(this).css("opacity","1");
+            });
+        });
+        // 轮播图
+        // $(function () {
+        //     var timer = null;
+        //     var index = 0;
+        //     $("#rightTurn").click(function () {
+        //         next();
+        //     });
+        //     $("#leftTurn").click(function () {
+        //         pre();
+        //     });
+        //     auto();
+        //     $(".big").mouseover(function(){ //鼠标移入 定时器取消
+        //         clearInterval(timer);
+        //     });
+        //     $(".big").mouseleave(function() { //鼠标离开 定时器开启
+        //         auto();
+        //     });
+        //     //鼠标碰触圆点图标实现图片左右轮播
+        //     $("#click li").mouseover(function(){
+        //         index = $(this).index();
+        //         $(".big img").animate({bottom:+index*470},0);
+        //         iconHover(index);
+        //     });
+        //     // 自定义函数
+        //     function auto() {
+        //         timer = setInterval(function(){
+        //             next();
+        //             iconHover(index);
+        //         },3000);//设置自动播放的定时器
+        //     }
+        //     function next(){
+        //         index++;
+        //         if(index>=$(".big img").length){
+        //             index = 0;
+        //             $(".big img").animate({bottom:0},0);
+        //         }
+        //         $(".big img").animate({bottom:+(index)*470},0);
+        //         iconHover(index);
+        //     }//下一张
+        //     function pre(){
+        //         index--;
+        //         if(index<0){
+        //             index = $(".big img").length-1;
+        //             $(".big img").animate({bottom:+(index+1)*470},0);
+        //         }
+        //         $(".big img").animate({bottom:+(index)*470},0);
+        //         iconHover(index);
+        //     }//上一张
+        //     //实现被选图片对应圆点图标索引更新
+        //     function iconHover(index){
+        //         $("#click li").eq(index).addClass("tabLi").siblings().removeClass("tabLi");
+        //         //找到该元素，为其增加class属性，然后使用siblings找到该元素的同胞，去除class属性
+        //     }
+        // })
+        $(function () {
+            setTimeout(changeImg,1000);
+        });
+        var i=-1;
+        var imgs = new Array("lunbo1.jpg","lunbo2.jpg","lunbo3.jpg","lunbo4.jpg","lunbo5.jpg");
+        function changeImg() {
+            i++;
+            if(i==imgs.length){
+                i=0;
+            }
+            $(".big img").attr("src","images/"+imgs[i]);
+            setTimeout(changeImg,1000);
+        }
+    </script>
+</head>
+<body>
+    <!--头部-->
+    <div id="head">
+        <div id="head_top1">
+        <div id="head_top">
+            <span><i class="iconfont red"></i>福建</span>
+            <div id="head_top_right">
+                <ul>
+                    <li class="head_top_right"><a>手机京东</a></li>
+                    <li class="head_top_right xian"><a>网站导航&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a>客户服务&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a>企业采购&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a class="red_font">京东会员&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a>我的京东&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a>我的订单&nbsp;&nbsp;&nbsp;</a></li>
+                    <li class="head_top_right xian"><a>你好，请登录</a> <a class="red_font">免费注册&nbsp;&nbsp;&nbsp;</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div id="head_bottom">
+            <div id="head_bottom_left"></div>
+            <div id="head_bottom_right">
+                <div id="search">
+                    <div id="search1">
+                        <div id="search1_1">
+                            <input type="text" size="70px" id="key">
+                            <img src="images/zhaoxiangji.png">
+                        </div>
+                        <a href="search.html"><button clstag="h|keycount|head|search_a" class="button" aria-label="搜索">
+                            <i class="iconfont"></i>
+                        </button></a>
+                        <div id="search1_2">
+                            <ul>
+                                <li style="color: red">优惠三百元</li>
+                                <li><a>正品好药</a></li>
+                                <li><a>空调钜惠</a></li>
+                                <li><a>开关五折</a></li>
+                                <li><a>美妆新品</a></li>
+                                <li><a>鞋靴清仓</a></li>
+                                <li><a>每100-50</a></li>
+                                <li><a>纸品生活</a></li>
+                                <li><a>养殖消毒</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="search2">
+                        <div id="search2_1">
+                            <i class="iconfont red"></i>
+                            <i class="ci-count">0</i>
+                        </div>
+                        <div id="search2_2">
+                            我的购物车
+                        </div>
+                    </div>
+                    <div id="search3"></div>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li style="color: red">秒杀</li>
+                        <li style="color: red">优惠卷</li>
+                        <li><a>PLUS会员</a></li>
+                        <li><a>品牌闪购</a></li>
+                        <li><a>拍卖</a></li>
+                        <li><a>京东时尚</a></li>
+                        <li><a>京东超市</a></li>
+                        <li><a>京东生鲜</a></li>
+                        <li><a>海囤全球</a></li>
+                        <li><a>京东金融</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--主题-->
+    <div id="body_kong">
+        <div id="body_border">
+            <div id="body1">
+                <div class="body1">
+                    <ul>
+                        <li><a>家用电器</a></li>
+                        <li><a>手机</a>/<a>运营商</a>/<a>数码</a></li>
+                        <li><a>电脑</a>/<a>办公</a></li>
+                        <li><a>家居</a>/<a>家具</a>/<a>家装</a>/<a>厨具</a></li>
+                        <li><a>男装</a>/<a>女装</a>/<a>童装</a>/<a>内衣</a></li>
+                        <li><a>美妆</a>/<a>个户清洁</a>/<a>宠物</a></li>
+                        <li><a>女鞋</a>/<a>箱包</a>/<a>钟表</a>/<a>珠宝</a></li>
+                        <li><a>男鞋</a>/<a>运动</a>/<a>户外</a></li>
+                        <li><a>房产</a>/<a>汽车</a>/<a>汽车用品</a></li>
+                        <li><a>母婴</a>/<a>玩具乐器</a></li>
+                        <li><a>食品</a>/<a>酒类</a>/<a>生鲜</a>/<a>特产</a></li>
+                        <li><a>艺术</a>/<a>礼品鲜花</a>/<a>农资绿植</a></li>
+                        <li><a>医药保健</a>/<a>计生情趣</a></li>
+                        <li><a>图书</a>/<a>文娱</a>/<a>电子书</a></li>
+                        <li><a>机票</a>/<a>酒店</a>/<a>旅游</a>/<a>生活</a></li>
+                        <li><a>理财</a>/<a>众筹</a>/<a>白条</a>/<a>保险</a></li>
+                        <li><a>安装</a>/<a>维修</a>/<a>清洗</a>/<a>二手</a></li>
+                        <li><a>工业品</a></li>
+                    </ul>
+                </div>
+                <div class="body1 big">
+                    <img src="images/lunbo1.jpg" width="590">
+                    <!--<img src="images/lunbo2.jpg" width="590">-->
+                    <!--<img src="images/lunbo3.jpg" width="590">-->
+                    <!--<img src="images/lunbo4.jpg" width="590">-->
+                    <!--<img src="images/lunbo5.jpg" width="590">-->
+                </div>
+                <!--<div id="click">-->
+                    <!--<ul>-->
+                        <!--<li class="tabLi"></li>-->
+                        <!--<li></li>-->
+                        <!--<li></li>-->
+                        <!--<li></li>-->
+                        <!--<li></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div id="turn">-->
+                    <!--<img src="images/left.png" id="leftTurn">-->
+                    <!--<img src="images/right.png" id="rightTurn">-->
+                <!--</div>-->
+                <div class="body1 xiao">
+                    <div class="body1_image">
+                        <img src="images/xiaoimage1.jpg" >
+                    </div>
+                    <div class="body1_image">
+                        <img src="images/xiaoimage2.jpg" >
+                    </div>
+                    <div class="body1_image">
+                        <img src="images/xiaoimage3.jpg" >
+                    </div>
+                </div>
+                <div class="body1">
+                    <div id="body1_shang">
+                        <div id="body1_shangimgae"></div>
+                        <div style="margin-top: 20px;">
+                            <p><a>Hi!~欢迎逛京东</a></p>
+                            <p><a>登录</a>|<a>注册</a></p>
+                        </div>
+                        <a><div id="body1_shang1">新人福利</div></a>
+                        <a><div id="body1_shang2">PLUS会员</div></a>
+                    </div>
+                    <div id="body1_zhong">
+                        <div id="body1_zhong1">
+                            <div id="body1_zhong1_kuaibao">京东快报</div>
+                            <div id="body1_zhong1_more"><a>更多</a></div>
+                        </div>
+                        <div id="body1_zhong2">
+                            <!--<ul>-->
+                                <!--<li><a><span>推荐</span> 华为麒麟990新突破！全新芯片架构横空出世</a></li>-->
+                                <!--<li><a><span>最新</span> 小米10：骁龙865+四摄+升降屏+100W快充，价香</a></li>-->
+                                <!--<li><a><span>热门</span> iPhone 11国行售价曝光，XR2也相应而出</a></li>-->
+                                <!--<li><a><span>热评</span> 华为敲定全新系统发布时间：8月9日见！</a></li>-->
+                            <!--</ul>-->
+                            <p><a><span>推荐</span> &nbsp;&nbsp;华为麒麟990新突破！全新芯片架构横空出世</a></p>
+                            <p><a><span>最新</span> &nbsp;&nbsp;小米10：骁龙865+四摄+升降屏+100W快充，价香</a></p>
+                            <p><a><span>热门</span> &nbsp;&nbsp;iPhone 11国行售价曝光，XR2也相应而出</a></p>
+                            <p><a><span>热评</span> &nbsp;&nbsp;华为敲定全新系统发布时间：8月9日见！</a></p>
+                        </div>
+                    </div>
+                    <div id="body1_xia">
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/huafei.png">
+                                <!--<div id="body1_xia_move1img"></div>-->
+                            </div>
+                            <div class="body1_xia_move2">话费</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/feiji.png">
+                            </div>
+                            <div class="body1_xia_move2">飞机</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/jiudian.png">
+                            </div>
+                            <div class="body1_xia_move2">酒店</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/youxi.png">
+                            </div>
+                            <div class="body1_xia_move2">游戏</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/jiayouka.png">
+                            </div>
+                            <div class="body1_xia_move2">加油卡</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/huafei.png">
+                            </div>
+                            <div class="body1_xia_move2">火车票</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/zhongchou.png">
+                            </div>
+                            <div class="body1_xia_move2">众筹</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/licai.png">
+                            </div>
+                            <div class="body1_xia_move2">理财</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/huafei.png">
+                            </div>
+                            <div class="body1_xia_move2">白条</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/dianyingpiao.png">
+                            </div>
+                            <div class="body1_xia_move2">电影票</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/qiyegou.png">
+                            </div>
+                            <div class="body1_xia_move2">企业购</div>
+                        </div>
+                        <div class="body1_xia">
+                            <div class="body1_xia_move1">
+                                <img src="images/lipinka.png">
+                            </div>
+                            <div class="body1_xia_move2">礼品卡</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="body2">
+                <div id="body2_left">
+                    <div id="body2_left_jingdongmiaosha">京东秒杀</div>
+                    <div id="body2_left_daojishi">倒计时</div>
+                </div>
+                <div id="body2_zhong">
+                    <a><div class="body2_zhong_image">
+                        <img src="images/daier.jpg" >
+                        <p>
+                            戴尔DELL成就5000不凡银13.3英寸商务办公超轻薄便携笔记本电脑(i5-8250U 8G 256GSSD AMD R530 2G独显 IPS)
+                            ¥4469.00¥5999.00
+                        </p>
+                        <div class="body2_zhong_money">
+                            <div class="body2_zhong_moneynow"><p>￥6459.00</p></div>
+                            <div class="body2_zhong_moneyold"><p><s>￥6999.00</s></p></div>
+                        </div>
+                    </div></a>
+                    <div class="body2_zhong_image">
+                        <a><div class="body2_zhong_image">
+                            <img src="images/guotongshiyou.jpg" >
+                            <p>
+                                【自动发货】国通石油按月充油卡 不限油品全国石油可用 储油价值6000元(含赠油）
+                                ¥5320.00¥6000.00
+                            </p>
+                            <div class="body2_zhong_money">
+                                <div class="body2_zhong_moneynow"><p>￥9688.00</p></div>
+                                <div class="body2_zhong_moneyold"><p><s>￥10388.00</s></p></div>
+                            </div>
+                        </div></a>
+                    </div>
+                    <div class="body2_zhong_image">
+                        <a><div class="body2_zhong_image">
+                            <img src="images/xiaodaodiaodongche.jpg" >
+                            <p>
+                                小刀电动车 3C新国标36V男女滑板车成人电瓶车老人代步车外卖小型电动单车两轮电动自行车 心语 油光亚黑
+                                ¥1499.00¥1999.00
+                            </p>
+                            <div class="body2_zhong_money">
+                                <div class="body2_zhong_moneynow"><p>￥999.00</p></div>
+                                <div class="body2_zhong_moneyold"><p><s>￥1699.00</s></p></div>
+                            </div>
+                        </div></a>
+                    </div>
+                    <div class="body2_zhong_image">
+                        <a><div class="body2_zhong_image">
+                            <img src="images/nanbiao.jpg" >
+                            <p>
+                                天梭(TISSOT)男表 机械表全自动恒意系列时尚休闲商务腕表日历真皮带钢带瑞士机械手表男 【全球联保】 T065.430.11.031.00
+                                ¥2699.00¥5800.00
+                            </p>
+                            <div class="body2_zhong_money">
+                                <div class="body2_zhong_moneynow"><p>￥359.00</p></div>
+                                <div class="body2_zhong_moneyold"><p><s>￥590.00</s></p></div>
+                            </div>
+                        </div></a>
+                    </div>
+                </div>
+                <div id="body2_right">
+                    <img src="images/miaoshadiannao.png">
+                </div>
+            </div>
+        </div>
+        <!--尾部-->
+        <div id="footer">
+            <iframe id="footerFrame" name="footerFrame" src="footer.html" width="1400" height="400" frameborder="0" scrolling="no" ></iframe>
+        <!--顶部导航栏-->
+        </div>
+        <div id="float_top">
+            <div id="float_top_logo"></div>
+            <div id="search_top_left_float"><input type="text" id="keyword_float"><span></span><img src="images/kuo.png" height="33"></div>
+            <div id="search_top_center_float" class="red"><i class="iconfont font16"></i><i class="ci-count">0</i>我的购物车
+            </div>
+        </div>
+    </div>
+    <!--返回-->
+    <div id="back">
+        <div class="back back_body2">
+            <a href="#body2">返回秒杀</a>
+        </div>
+        <div class="back back_body1">
+            <a href="#body1">返回菜单</a>
+        </div>
+        <div class="back kefu">
+            <a href="#"><svg id="icon_timline" viewBox="0 0 16 16" width="15px" height="15px"><path d="M12.986 5.582a.505.505 0 0 0 .25-.063c.34-.188.364-.738.056-1.252-.235-.391-.59-.643-.905-.643a.511.511 0 0 0-.251.063c-.338.188-.363.738-.055 1.252.234.391.59.643.905.643m-9.975 0c.317 0 .674-.252.91-.643.31-.514.286-1.064-.056-1.253a.52.52 0 0 0-.252-.062c-.317 0-.674.252-.91.643-.31.514-.285 1.064.056 1.252.076.042.16.063.252.063m10.779.956a.372.372 0 0 0-.295-.024.387.387 0 0 0-.225.201c-.013.025-.315.609-1.062 1.191-.738.573-2.062 1.26-4.185 1.279h-.075c-2.076 0-3.384-.653-4.116-1.2-.779-.581-1.094-1.177-1.097-1.182a.395.395 0 0 0-.23-.199.371.371 0 0 0-.293.031.42.42 0 0 0-.161.549c.039.077.413.772 1.316 1.45.826.622 2.29 1.363 4.573 1.363l.089-.001c2.331-.019 3.81-.793 4.641-1.439.862-.672 1.225-1.345 1.292-1.475a.419.419 0 0 0-.172-.544m-5.848-.124c1.092 0 2.268-.218 2.268-.697S9.034 5.02 7.942 5.02c-1.071 0-2.152.216-2.152.697s1.081.697 2.152.697m4.086 4.647c-1.004.574-1.052 1.597-1.015 2.223a.098.098 0 0 1-.113.104c-.693-.096-1.161-.407-1.757-.943a1.343 1.343 0 0 0-.933-.351l-.21.003c-3.809 0-6.897-2.458-6.897-5.489 0-3.032 3.088-5.489 6.897-5.489 3.808 0 6.896 2.457 6.896 5.489 0 1.834-1.129 3.461-2.868 4.453M8 0C3.589 0 0 2.931 0 6.533c0 3.603 3.589 6.533 8 6.533l.224-.002c.102 0 .204.033.272.099 1.239 1.205 2.568 1.323 3.303 1.336a.3.3 0 0 0 .303-.342c-.087-.613-.318-1.813.477-2.263C14.722 10.684 16 8.677 16 6.533 16 2.931 12.411 0 8 0"></path></svg>
+            客服</a>
+        </div>
+        <div class="back fankui">
+            <a href="#"><svg id="icon_feedback" viewBox="0 0 16 16" width="15px" height="15px"><path d="M1.4,15l0-1l14,0v1H1.4z M2.5,13H2l0-0.5c0-0.1,0-0.2,0-0.3c0-0.3,0.1-0.8,0.2-1.3c0.1-0.7,0.4-1.7,0.4-2 C2.7,8.7,2.8,8.4,3,8.3l8-8c0.3-0.3,0.8-0.3,1.1,0l2.7,2.7c0.3,0.3,0.3,0.8,0,1.1l0,0l-8,8c-0.1,0.1-0.4,0.3-0.6,0.4 c-0.7,0.2-1.4,0.3-2.1,0.4c-0.5,0.1-1,0.2-1.3,0.2C2.7,13,2.6,13,2.5,13z M11.6,1.1L3.7,9c0,0.1-0.1,0.1-0.1,0.2 c-0.1,0.2-0.3,1.1-0.4,1.9c-0.1,0.3-0.1,0.6-0.1,0.9c0.3,0,0.6-0.1,0.9-0.1c0.7-0.1,1.3-0.2,2-0.4c0,0,0.1-0.1,0.2-0.1L14,3.5 L11.6,1.1z M14.1,3.3C14.1,3.3,14.1,3.3,14.1,3.3L14.1,3.3z M11.4,0.9C11.4,0.9,11.4,0.9,11.4,0.9L11.4,0.9z"></path></svg>
+            反馈</a>
+        </div>
+        <div class="back back_head">
+            <a href="#head">返回顶部</a>
+        </div>
+    </div>
+
+</body>
+</html>

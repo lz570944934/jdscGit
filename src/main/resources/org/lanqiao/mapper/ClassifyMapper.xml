@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.ClassifyMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Classify" >
+    <id column="classify_id" property="classifyId" jdbcType="INTEGER" />
+    <result column="classify_name" property="classifyName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    classify_id, classify_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classify
+    where classify_id = #{classifyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classify
+    where classify_id = #{classifyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Classify" >
+    insert into classify (classify_id, classify_name)
+    values (#{classifyId,jdbcType=INTEGER}, #{classifyName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Classify" >
+    insert into classify
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classifyId != null" >
+        classify_id,
+      </if>
+      <if test="classifyName != null" >
+        classify_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classifyId != null" >
+        #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="classifyName != null" >
+        #{classifyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Classify" >
+    update classify
+    <set >
+      <if test="classifyName != null" >
+        classify_name = #{classifyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where classify_id = #{classifyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Classify" >
+    update classify
+    set classify_name = #{classifyName,jdbcType=VARCHAR}
+    where classify_id = #{classifyId,jdbcType=INTEGER}
+  </update>
+</mapper>

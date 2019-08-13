@@ -1,0 +1,390 @@
+/*主体*/
+#body_kong{
+    height: 750px;
+    background-color: #f4f4f4;
+    padding-top: 10px;
+}
+#body_border{
+    border: 1px solid black;
+    width: 1200px;
+    height: 750px;
+    margin: auto;
+}
+#body1{
+    width: 1200px;
+    height: 470px;
+}
+.body1{
+    width: 190px;
+    height: 470px;
+    float: left;
+    margin-right: 7px;
+    background-color: white;
+}
+.big{
+    width: 590px;
+    overflow: hidden;
+}
+.big img{
+    position: relative;
+}
+#click{
+    height: 20px;
+    width: 100px;
+    position: absolute;
+    left: 500px;
+    top: 620px;
+}
+#click .tabLi{
+    background-color: white;
+}
+#click ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#click li{
+    height: 14px;
+    width: 14px;
+    float: left;
+    margin: 2px;
+    border-radius: 7px;
+    background-color:#7d7d7d;
+    cursor: pointer;
+}
+#turn{
+    position: absolute;
+    top: 400px;
+    left: 0;
+    /*display: none;*/
+}
+#leftTurn{
+    margin-left: 360px;
+    cursor: pointer;
+}
+#rightTurn{
+    margin-left: 520px;
+    cursor: pointer;
+}
+.xiao{
+    background-color: #f4f4f4;
+}
+.body1 li{
+    clear: both;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+.body1 a{
+    cursor: pointer;
+}
+.body1 a:hover{
+    color: red;
+}
+.body1_image{
+    float: left;
+    width: 100%;
+    height: 31%;
+    margin-bottom: 15px;
+}
+
+#body1_shang{
+    width: 190px;
+    height: 90px;
+    border-bottom: 1px solid #eee;
+}
+#body1_shangimgae{
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../images/dengluzhuce.png");
+    background-position: -2px -4px;
+    margin-left: 15px;
+    float: left;
+    margin-right: 20px;
+}
+#body1_shang1{
+    width: 70px;
+    height: 25px;
+    background-color: red;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+}
+#body1_shang1:hover{
+    background-color: #c81623;
+}
+#body1_shang2{
+    width: 70px;
+    height: 25px;
+    background-color: black;
+    margin-top: -26px;
+    margin-left: 100px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+}
+#body1_shang2:hover{
+    background-color: #c81623;
+}
+#body1_shang1 span{
+    text-align: center;
+    align-content: center;
+}
+
+#body1_zhong{
+    width: 190px;
+    height: 130px;
+    border-bottom: 1px solid #eee;
+}
+#body1_zhong1{
+    width: 190px;
+    height: 30px;
+}
+#body1_zhong1_kuaibao{
+    font-size: 14px;
+    color: #333;
+    margin-left: 10px;
+    margin-top: 4px;
+    float: left;
+}
+#body1_zhong1_more{
+    float: right;
+    margin-right: 20px;
+    margin-top: 6px;
+}
+#body1_zhong2{
+    width: 170px;
+    height: 100px;
+}
+
+#body1_zhong2 span{
+    color: red;
+    background-color: #fdeeed;
+}
+#body1_zhong2 p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 5px;
+    margin-left: 7px;
+}
+
+#body1_xia{
+    width: 190px;
+    height: 224px;
+}
+.body1_xia{
+    width: 32%;
+    height: 24%;
+    float: left;
+    cursor: pointer;
+}
+.body1_xia_move1{
+    margin-top: 10px;
+    margin-left: 6px;
+}
+
+.body1_xia_move2{
+    margin-left: 8px;
+}
+
+.body1_xia:hover{
+    color: red;
+}
+#body2{
+    width: 1200px;
+    height: 260px;
+    background: white;
+    margin-top: 20px;
+}
+#body2_left{
+    width: 190px;
+    height: 100%;
+    float: left;
+    background-image: url("../images/jingdongmiaosha.png");
+}
+#body2_left_jingdongmiaosha{
+    width: 190px;
+    height: 45px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-top: 47px;
+}
+#body2_left_daojishi{
+    width: 190px;
+    height: 45px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    margin-top: 71px;
+}
+#body2_zhong{
+    width: 800px;
+    height: 100%;
+    float: left;
+}
+.body2_zhong_image{
+    width: 198px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+.body2_zhong_image img{
+    margin-top: 34px;
+    margin-left: 30px;
+}
+.body2_zhong_image p{
+    margin-left: 15px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
+}
+.body2_zhong_money{
+    border: 1px solid red;
+    width: 160px;
+    height: 24px;
+    margin-left: 15px;
+    margin-top: 8px;
+    position: relative;
+}
+.body2_zhong_moneynow{
+    width: 80px;
+    height: 10%;
+    background-color: #e1251b;
+    border-width: 22px 8px 0 0;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+    position: absolute;
+}
+.body2_zhong_moneynow p{
+    margin-top: -20px;
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+.body2_zhong_moneyold p{
+    margin-top: 4px;
+    margin-left: 90px;
+    font-size: 12px;
+    color: #999;
+}
+
+#body2_right{
+    width: 200px;
+    height: 100%;
+    float: left;
+}
+#body2_right img{
+    margin-left: 20px;
+}
+/*返回*/
+#back{
+    height: 220px;
+    width: 40px;
+    position: fixed;
+    right: 110px;
+    bottom: 50px;
+    background-color: white;
+}
+.back{
+    height: 40px;
+    width: 30px;
+    position: fixed;
+    text-align: center;
+    margin-left:5px;
+}
+.back_body2{
+    border-bottom: 1px solid #eeeeee;
+}
+.back_body1{
+    margin-top: 45px;
+    border-bottom: 1px solid #eeeeee;
+}
+.kefu{
+    margin-top: 90px;
+    border-bottom: 1px solid #eeeeee;
+}
+.fankui{
+    margin-top: 135px;
+    border-bottom: 1px solid #eeeeee;
+}
+.back_head{
+    margin-top: 180px;
+}
+/*logo*/
+#float_top_logo{
+    width: 125px;
+    height: 40px;
+    background-image: url("../images/sprite.png");
+    background-position: 0px -120px;
+    float: left;
+}
+/*搜索栏*/
+#float_top{
+    height: 52px;
+    width: 1500px;
+    border-bottom: 2px solid #c81623;
+    background-color: #ffffff;
+    padding-left: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#search_top_left_float {
+    width: 530px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 125px;
+    float: left;
+}
+
+#keyword_float {
+    padding: 2px 44px 2px 17px;
+    width: 400px;
+    height: 25px;
+    border: 2px solid #e1251b;
+    line-height: 25px;
+    font-size: 14px;
+    float: left;
+}
+
+#search_top_left_float img {
+    float: left;
+}
+
+/*购物车*/
+#search_top_center_float {
+    width: 140px;
+    height: 33px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 33px;
+    float: left;
+    margin-top: 10px;
+    border: 1px solid #eeeeee;
+    margin-left: 50px;
+}
+
+#search_top_center_float .ci-count {
+    position: relative;
+    top: -8px;
+    left: -6px;
+    right: auto;
+    display: inline-block;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center;
+}

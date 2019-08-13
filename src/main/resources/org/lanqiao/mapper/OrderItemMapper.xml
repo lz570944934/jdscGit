@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.OrderItemMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.OrderItem" >
+    <id column="orderItem_id" property="orderitemId" jdbcType="INTEGER" />
+    <result column="goodsBuy_name" property="goodsbuyName" jdbcType="VARCHAR" />
+    <result column="goodsBuy_number" property="goodsbuyNumber" jdbcType="INTEGER" />
+    <result column="goodsBuy_price" property="goodsbuyPrice" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orderItem_id, goodsBuy_name, goodsBuy_number, goodsBuy_price, order_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderitem
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderitem
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.OrderItem" >
+    insert into orderitem (orderItem_id, goodsBuy_name, goodsBuy_number, 
+      goodsBuy_price, order_id)
+    values (#{orderitemId,jdbcType=INTEGER}, #{goodsbuyName,jdbcType=VARCHAR}, #{goodsbuyNumber,jdbcType=INTEGER}, 
+      #{goodsbuyPrice,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.OrderItem" >
+    insert into orderitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderitemId != null" >
+        orderItem_id,
+      </if>
+      <if test="goodsbuyName != null" >
+        goodsBuy_name,
+      </if>
+      <if test="goodsbuyNumber != null" >
+        goodsBuy_number,
+      </if>
+      <if test="goodsbuyPrice != null" >
+        goodsBuy_price,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderitemId != null" >
+        #{orderitemId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsbuyName != null" >
+        #{goodsbuyName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsbuyNumber != null" >
+        #{goodsbuyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsbuyPrice != null" >
+        #{goodsbuyPrice,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.OrderItem" >
+    update orderitem
+    <set >
+      <if test="goodsbuyName != null" >
+        goodsBuy_name = #{goodsbuyName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsbuyNumber != null" >
+        goodsBuy_number = #{goodsbuyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsbuyPrice != null" >
+        goodsBuy_price = #{goodsbuyPrice,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.OrderItem" >
+    update orderitem
+    set goodsBuy_name = #{goodsbuyName,jdbcType=VARCHAR},
+      goodsBuy_number = #{goodsbuyNumber,jdbcType=INTEGER},
+      goodsBuy_price = #{goodsbuyPrice,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER}
+    where orderItem_id = #{orderitemId,jdbcType=INTEGER}
+  </update>
+</mapper>
