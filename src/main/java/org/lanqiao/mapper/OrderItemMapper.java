@@ -2,6 +2,8 @@ package org.lanqiao.mapper;
 
 import org.lanqiao.entity.OrderItem;
 
+import java.util.List;
+
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer orderitemId);
 
@@ -14,4 +16,5 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
+
 }
