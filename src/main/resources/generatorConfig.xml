@@ -69,14 +69,13 @@
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="flase" />-->
 		<!--</table>-->
-		<!--<table tableName="goods" domainObjectName="Goods"-->
-			<!--enableCountByExample="false" enableDeleteByExample="false"-->
-			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="flase" />-->
-		<!--</table>-->
+		<table tableName="goods" domainObjectName="Goods"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="flase" />
+		</table>
 		<!--<table tableName="goodsorder" domainObjectName="GoodsOrder"-->
-			   <!--enableCountByExample="false" enableDeleteByExample="false"-->
-			   <!--enableSelectByExample="false" enableUpdateByExample="false">-->
+			   <!--enableCountByExample="false" enableDeleteByExample="false"-->		<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="flase" />-->
 		<!--</table>-->
 		<!--<table tableName="goodscart" domainObjectName="GoodsCart"-->
@@ -109,15 +108,15 @@
 			   <!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="flase" />-->
 		<!--</table>-->
-		<!--<table tableName="user" domainObjectName="User"-->
-			   <!--enableCountByExample="false" enableDeleteByExample="false"-->
-			   <!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="flase" />-->
-		<!--</table>-->
-		<!--<table tableName="useraddress" domainObjectName="UserAddress"-->
-			   <!--enableCountByExample="false" enableDeleteByExample="false"-->
-			   <!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="flase" />-->
-		<!--</table>-->
+		<table tableName="user" domainObjectName="User"
+			   enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="flase" />
+		</table>
+		<table tableName="useraddress" domainObjectName="UserAddress"
+			   enableCountByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="flase" />
+		</table>
 	</context>
 </generatorConfiguration>

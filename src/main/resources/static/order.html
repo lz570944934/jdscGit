@@ -99,9 +99,9 @@
                                 <b></b>
                             </div>
                             <div class="addr-detail">
-                                <span class="addr-name">陈同学</span>
-                                <span class="addr-info">甘肃省 兰州市 西固区 XXXXXXX</span>
-                                <span class="addr-tel">155****8089</span>
+                                <span class="addr-name">{{username}}</span>
+                                <span class="addr-info">{{address}}</span>
+                                <span class="addr-tel">{{phone}}</span>
                             </div>
                         </li>
                     </ul>
@@ -156,7 +156,7 @@
                         <div class="shopping-list-abctest">
                             <div class="good-list">
                                 <div class="goods-tit">
-                                    <h4>商家：佳沪手机旗舰店</h4>
+                                    <h4>商家：{{brand}}</h4>
                                 </div>
                                 <div class="goods-item">
                                     <div class="goods-sit-tit">
@@ -175,9 +175,9 @@
                                                 <a href="">Apple 苹果 iPhone X 全面屏手机 深空灰色 全网通 64GB</a>
                                             </div>
                                             <div class="p-price">
-                                                <strong class="jd-price">￥7088.00</strong>
+                                                <strong class="jd-price">￥{{price}}</strong>
                                                 <span class="p-num">
-                                                            x1
+                                                            x{{number}}
                                                         </span>
                                                 <span class="pre-state">有货</span>
                                                 <span class="gift-bean">
@@ -289,18 +289,17 @@
                 <h3>使用优惠/礼品卡/抵用</h3>
                 <i></i>
             </div>
-
         </div>
 
 
-        <div class="order-summary">
+        <div class="order-summary" id="order-summary">
             <div class="static">
                 <div class="list">
                             <span>
-                                <em class="ftx-01">1</em>
+                                <em class="ftx-01">{{number}}</em>
                                 件商品，总商品金额：
                             </span>
-                    <em class="price">￥7088.00</em>
+                    <em class="price">￥{{price}}</em>
                 </div>
                 <div class="list">
                     <span>返现：</span>
@@ -327,15 +326,15 @@
         </div>
 
 
-        <div class="trade-foot">
+        <div class="trade-foot" id="trade-foot">
             <div class="detail">
                 <div class="price-info">
                     <span>应付总额：</span>
-                    <span id="money">￥7088.00</span>
+                    <span id="money">￥{{price}}</span>
                 </div>
                 <div class="consignee-info">
-                    <span>寄送至： 甘肃省 兰州市 西固区 XXXXXXX</span>
-                    <span>收货人：陈皓 155****8089</span>
+                    <span>寄送至： {{address}}</span>
+                    <span>收货人：{{username}} {{phone}}</span>
                 </div>
             </div>
             <div id="check-footbar">
@@ -453,11 +452,39 @@
 </body>
 <script src="js/vue.js"></script>
 <script>
-    var vm = new Vue({
-        el:"#addr",
-        data:{
-            message:"家里"
+    var vm1 = new Vue({
+        el: "#addr",
+        data: {
+            message: '家里',
+            username: '陈同学',
+            address: '甘肃省 兰州市 西固区 XXXXXXX',
+            phone: '155****8089',
 
+        }
+    })
+    var vm2 = new Vue({
+        el: "#ship-cont",
+        data: {
+            brand: '佳沪手机旗舰店',
+            price: 7800.00,
+            number: 1,
+        }
+    })
+
+    var vm3 = new Vue({
+        el:"#trade-foot",
+        data:{
+            price:7800.00,
+            address:"甘肃省 兰州市 西固区 XXXXXXX",
+            phone:155+"****"+8089,
+        }
+    })
+
+    var vm4 = new Vue({
+        el:"#order-summary",
+        data:{
+            price:7800.00,
+            number:1
         }
     })
 </script>

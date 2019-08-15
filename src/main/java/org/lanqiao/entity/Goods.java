@@ -7,13 +7,13 @@ public class Goods {
 
     private Integer goodsNumber;
 
-    private Integer goodsnote1;
-
-    private Integer goodsNote2;
-
     private Integer classifyId;
 
     private Integer brandId;
+
+    private String goodsNote1;
+
+    private String goodsNote2;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -55,11 +55,19 @@ public class Goods {
         this.brandId = brandId;
     }
 
-    public Integer getGoodsnote1() { return goodsnote1; }
+    public String getGoodsNote1() {
+        return goodsNote1;
+    }
 
-    public void setGoodsnote1(Integer goodsnote1) { this.goodsnote1 = goodsnote1; }
+    public void setGoodsNote1(String goodsNote1) {
+        this.goodsNote1 = goodsNote1 == null ? null : goodsNote1.trim();
+    }
 
-    public Integer getGoodsNote2() { return goodsNote2; }
+    public String getGoodsNote2() {
+        return goodsNote2;
+    }
 
-    public void setGoodsNote2(Integer goodsNote2) { this.goodsNote2 = goodsNote2; }
+    public void setGoodsNote2(String goodsNote2) {
+        this.goodsNote2 = goodsNote2 == null ? null : goodsNote2.trim();
+    }
 }

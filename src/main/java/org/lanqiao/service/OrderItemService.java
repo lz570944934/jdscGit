@@ -8,6 +8,5 @@ public interface OrderItemService {
 
     public OrderItem getItems();
 
-    public List<OrderItem> getAllOrderItem();
 
 }

@@ -1,5 +1,7 @@
 package org.lanqiao.entity;
 
+import java.math.BigInteger;
+
 public class User {
     private Integer userId;
 
@@ -7,7 +9,7 @@ public class User {
 
     private String userPass;
 
-    private Integer userPhone;
+    private String userPhone;
 
     private String userEmail;
 
@@ -41,11 +43,11 @@ public class User {
         this.userPass = userPass == null ? null : userPass.trim();
     }
 
-    public Integer getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(Integer userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
