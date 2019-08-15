@@ -156,6 +156,8 @@
     height: 260px;
 }
 #body2left li img{
+    width: 160px;
+    height: 160px;
     margin-top: 5px;
     margin-left: 3px;
 }
@@ -216,6 +218,32 @@
 }
 #body2right_1 img{
     margin-left: 15px;
+}
+#body2right_1_pageNumber{
+    height: 40px;
+    width: 95px;
+    margin-top: 3px;
+    float: right;
+}
+#body2right_1_pageNumber b{
+    color: red;
+}
+#pre_page{
+    border: 1px solid #DDD;
+    height: 25px;
+    width: 30px;
+    text-align: center;
+    font-size: 16px;
+    float: right;
+}
+#next_page{
+    border: 1px solid #DDD;
+    height: 25px;
+    width: 30px;
+    float: right;
+    text-align: center;
+    font-size: 16px;
+    background: #FFF;
 }
 
 #body2right_2{

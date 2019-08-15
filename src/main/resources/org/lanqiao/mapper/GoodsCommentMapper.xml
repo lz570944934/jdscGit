@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.GoodsCommentMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.GoodsComment" >
+  <resultMap id="GoodsCommentResultMap" type="org.lanqiao.entity.GoodsComment" >
     <id column="goodsComment_id" property="goodscommentId" jdbcType="INTEGER" />
     <result column="goodsComment_level" property="goodscommentLevel" jdbcType="INTEGER" />
     <result column="goodsComment_content" property="goodscommentContent" jdbcType="VARCHAR" />
     <result column="goodsComment_time" property="goodscommentTime" jdbcType="TIMESTAMP" />
     <result column="goodsComment_url" property="goodscommentUrl" jdbcType="VARCHAR" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     goodsComment_id, goodsComment_level, goodsComment_content, goodsComment_time, goodsComment_url, 
     goods_id, user_id, order_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="GoodsCommentResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from goodscomment

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.GoodsStyleMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.GoodsStyle" >
+  <resultMap id="GoodsStyleResultMap" type="org.lanqiao.entity.GoodsStyle" >
     <id column="goodsStyle_id" property="goodsstyleId" jdbcType="INTEGER" />
     <result column="goodsStyle_content" property="goodsstyleContent" jdbcType="VARCHAR" />
     <result column="goodsStyle_price" property="goodsstylePrice" jdbcType="INTEGER" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    goodsStyle_id, goodsStyle_content, goodsStyle_price, goods_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="GoodsStyleResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    *
     from goodsstyle
     where goodsStyle_id = #{goodsstyleId,jdbcType=INTEGER}
   </select>

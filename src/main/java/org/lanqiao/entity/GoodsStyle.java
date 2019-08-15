@@ -7,7 +7,9 @@ public class GoodsStyle {
 
     private Integer goodsstylePrice;
 
-    private Integer goodsId;
+//    private Integer goodsId;
+
+    private Goods goods;
 
     public Integer getGoodsstyleId() {
         return goodsstyleId;
@@ -33,11 +35,19 @@ public class GoodsStyle {
         this.goodsstylePrice = goodsstylePrice;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+//    public Integer getGoodsId() {
+//        return goodsId;
+//    }
+//
+//    public void setGoodsId(Integer goodsId) {
+//        this.goodsId = goodsId;
+//    }
+
+    public Goods getGoods() {
+        return goods;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 }

@@ -13,11 +13,7 @@ public class GoodsComment {
 
     private String goodscommentUrl;
 
-    private Integer goodsId;
-
-    private Integer userId;
-
-    private Integer orderId;
+    private Goods goods;
 
     public Integer getGoodscommentId() {
         return goodscommentId;
@@ -59,27 +55,11 @@ public class GoodsComment {
         this.goodscommentUrl = goodscommentUrl == null ? null : goodscommentUrl.trim();
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+    public Goods getGoods() {
+        return goods;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 }

@@ -3,6 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>商品搜索</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:'http://localhost:8080/searchgoods',
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    var goodsList=data.goodsList;
+                    var goodsComment=data.goodsComment;
+                    for(var i=0;i<goodsList.length;i++){
+                        // var setGoodsImg=data[i].setGoodsImg;
+                        // var setGoodsStyle=data[i].setGoodsStyle;
+                        var setGoodsImg=goodsList[i].setGoodsImg;
+                        var setGoodsStyle=goodsList[i].setGoodsStyle;
+                        goods.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                            goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                            goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                    }
+                    for(var i=0;i<goodsList.length&&i<6;i++){
+                        var setGoodsImg=goodsList[i].setGoodsImg;
+                        var setGoodsStyle=goodsList[i].setGoodsStyle;
+                        goodsSelect.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                            goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                            goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                    }
+                }
+            });
+            var goods = new Vue({
+                el:"#body2right_3",
+                data:{
+                    imgs:[]
+                }
+            });
+            var goodsSelect = new Vue({
+                el:"#body2left",
+                data:{
+                    imgs:[]
+                }
+            });
+        })
+    </script>
+    <script src="js/vue.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/head.css">
     <link rel="stylesheet" href="css/search.css">
@@ -217,46 +260,43 @@
             <div id="body2left">
                 <h3>商品精选</h3>
                 <span id="guanggao"><img src="images/guanggao.gif"></span>
-                <!--<div class="shangpinjingxuan">-->
-                    <!--<img src="images/shangpinjingxuan1.jpg">-->
-                <!--</div>-->
                 <ul>
-                    <li>
-                        <img src="images/shangpinjingxuan1.jpg">
-                        <p class="body2left_p">￥1669.00</p>
-                        <p>酷耶(Cooyes)i5四核/GTX1060独显6G/台式机</p>
-                        <p>已有<span>2.3万+</span>人评价</p>
+                    <li v-for="(img,index) in imgs">
+                        <img v-bind:src="img.goodsimgUrl">
+                        <p class="body2left_p">￥{{img.goodsstylePrice}}.00</p>
+                        <p>{{img.goodsNote1}}</p>
+                        <p>已有<span>{{img.goodsComment}}+</span>人评价</p>
                     </li>
-                    <li>
-                        <img src="images/shangpinjingxuan2.jpg">
-                        <p class="body2left_p">￥1299.00</p>
-                        <p>星惠佳四核/i5/i7升八核8G独显游戏办公吃鸡台式</p>
-                        <p>已有<span>1.3万+</span>人评价</p>
-                    </li>
-                    <li>
-                        <img src="images/shangpinjingxuan3.jpg">
-                        <p class="body2left_p">￥2999.00</p>
-                        <p>纵横卓创 九代酷睿i5 9400F/2G显卡创意平面设计师工业绘图电商美工影楼广告组装台式</p>
-                        <p>已有<span>1000+</span>人评价</p>
-                    </li>
-                    <li>
-                        <img src="images/shangpinjingxuan4.jpg">
-                        <p class="body2left_p">￥2499.00</p>
-                        <p>惠普（HP）小欧22-c013 高清一体机</p>
-                        <p>已有<span>1.6万+</span>人评价</p>
-                    </li>
-                    <li>
-                        <img src="images/shangpinjingxuan5.jpg">
-                        <p class="body2left_p">￥7788.00</p>
-                        <p>华橙i7-9700K高端水冷游戏</p>
-                        <p>已有<span>0</span>人评价</p>
-                    </li>
-                    <li>
-                        <img src="images/shangpinjingxuan6.jpg">
-                        <p class="body2left_p">￥1999.00</p>
-                        <p>i5 8400升E5 2450八核/RX580 8G独显16G内存吃鸡游戏台式</p>
-                        <p>已有<span>80+</span>人评价</p>
-                    </li>
+                    <!--<li>-->
+                        <!--<img src="images/shangpinjingxuan2.jpg">-->
+                        <!--<p class="body2left_p">￥1299.00</p>-->
+                        <!--<p>星惠佳四核/i5/i7升八核8G独显游戏办公吃鸡台式</p>-->
+                        <!--<p>已有<span>1.3万+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="images/shangpinjingxuan3.jpg">-->
+                        <!--<p class="body2left_p">￥2999.00</p>-->
+                        <!--<p>纵横卓创 九代酷睿i5 9400F/2G显卡创意平面设计师工业绘图电商美工影楼广告组装台式</p>-->
+                        <!--<p>已有<span>1000+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="images/shangpinjingxuan4.jpg">-->
+                        <!--<p class="body2left_p">￥2499.00</p>-->
+                        <!--<p>惠普（HP）小欧22-c013 高清一体机</p>-->
+                        <!--<p>已有<span>1.6万+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="images/shangpinjingxuan5.jpg">-->
+                        <!--<p class="body2left_p">￥7788.00</p>-->
+                        <!--<p>华橙i7-9700K高端水冷游戏</p>-->
+                        <!--<p>已有<span>0</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="images/shangpinjingxuan6.jpg">-->
+                        <!--<p class="body2left_p">￥1999.00</p>-->
+                        <!--<p>i5 8400升E5 2450八核/RX580 8G独显16G内存吃鸡游戏台式</p>-->
+                        <!--<p>已有<span>80+</span>人评价</p>-->
+                    <!--</li>-->
                 </ul>
             </div>
             <div id="body2right">
@@ -269,6 +309,12 @@
                         <li>价格 <div class="body2right_1_img"></div></li>
                     </ul>
                     <img src="images/zhuxingtu.png">
+                    <div id="next_page">></div>
+                    <div id="pre_page"><</div>
+                    <div id="body2right_1_pageNumber">
+                        <span>共？件商品</span>
+                        <span><b>1</b>/?</span>
+                    </div>
                 </div>
                 <div id="body2right_2">
                     <span>配送至</span>
@@ -293,30 +339,30 @@
                     </div>
                 </div>
                 <div id="body2right_3">
-                    <div class="body2right_3_shangpin">
-                        <img src="images/shangpin1.jpg">
-                        <p class="body2right_3_p">￥1669.00</p>
-                        <p>威龙远航 i7升八核E5 2689/16GD3/GTX1060 游戏台式吃鸡电脑主机/DIY组装机 配置二（E5八核+16G+GTX950） 【升酷睿E5-2450八核处理器】【升16G大内存】【升1060吃鸡独显】【指定款送24英寸显示器】【下单送机械手感键鼠】</p>
-                        <p>已有<span>2.3万+</span>人评价</p>
-                        <p>威龙远航DIY电脑旗舰店<img src="images/kefu.png"></p>
+                    <div class="body2right_3_shangpin" v-for="(img,index) in imgs">
+                        <img v-bind:src="img.goodsimgUrl">
+                        <!--{{img.goodsimgUrl}}-->
+                        <p class="body2right_3_p">￥{{img.goodsstylePrice}}.00</p>
+                        <p>{{img.goodsNote1}}</p>
+                        <p>已有<span>{{img.goodsComment}}+</span>人评价<img src="images/kefu.png"></p>
                         <ul>
                             <li style="width: 60px"><div id="body2right_3_shangpin_gouwuche1"></div><span>对比</span></li>
                             <li style="width: 60px"><div id="body2right_3_shangpin_gouwuche2"></div><span>关注</span></li>
                             <li style="width: 90px"><div id="body2right_3_shangpin_gouwuche3"></div><span>购物车</span></li>
                         </ul>
                     </div>
-                    <div class="body2right_3_shangpin">
-                        <img src="images/shangpin1.jpg">
-                    </div>
-                    <div class="body2right_3_shangpin">
-                        <img src="images/shangpin1.jpg">
-                    </div>
-                    <div class="body2right_3_shangpin">
-                        <img src="images/shangpin1.jpg">
-                    </div>
-                    <div class="body2right_3_shangpin">
-                        <img src="images/shangpin1.jpg">
-                    </div>
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="images/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="images/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="images/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="images/shangpin1.jpg">-->
+                    <!--</div>-->
                     <div id="body2right_3_zuihou">
                         <div id="fenye">
                             <a href="#">上一页</a>

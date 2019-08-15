@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.GoodsImgMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.GoodsImg" >
+  <resultMap id="GoodsImgResultMap" type="org.lanqiao.entity.GoodsImg" >
     <id column="goodsImg_id" property="goodsimgId" jdbcType="INTEGER" />
     <result column="goodsImg_url" property="goodsimgUrl" jdbcType="VARCHAR" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    goodsImg_id, goodsImg_url, goods_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="GoodsImgResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    goodsImg_id, goodsImg_url
     from goodsimg
     where goodsImg_id = #{goodsimgId,jdbcType=INTEGER}
   </select>

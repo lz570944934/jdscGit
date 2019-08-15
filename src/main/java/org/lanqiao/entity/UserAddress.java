@@ -7,7 +7,7 @@ public class UserAddress {
 
     private String userName;
 
-    private Integer userPhone;
+    private String userPhone;
 
     private Integer userId;
 
@@ -35,12 +35,12 @@ public class UserAddress {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public Integer getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(Integer userPhone) {
-        this.userPhone = userPhone;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone == null ? null : userPhone.trim();
     }
 
     public Integer getUserId() {

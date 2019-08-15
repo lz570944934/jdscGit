@@ -1,7 +1,9 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.Classify;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ClassifyMapper {
     int deleteByPrimaryKey(Integer classifyId);
 

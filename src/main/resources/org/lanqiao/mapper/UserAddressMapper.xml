@@ -5,7 +5,7 @@
     <id column="userAddress_id" property="useraddressId" jdbcType="INTEGER" />
     <result column="userAddress_name" property="useraddressName" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="user_phone" property="userPhone" jdbcType="INTEGER" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -25,7 +25,7 @@
     insert into useraddress (userAddress_id, userAddress_name, user_name, 
       user_phone, user_id)
     values (#{useraddressId,jdbcType=INTEGER}, #{useraddressName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{userPhone,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+      #{userPhone,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.UserAddress" >
     insert into useraddress
@@ -57,7 +57,7 @@
         #{userName,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null" >
-        #{userPhone,jdbcType=INTEGER},
+        #{userPhone,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
@@ -74,7 +74,7 @@
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null" >
-        user_phone = #{userPhone,jdbcType=INTEGER},
+        user_phone = #{userPhone,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
@@ -86,7 +86,7 @@
     update useraddress
     set userAddress_name = #{useraddressName,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
-      user_phone = #{userPhone,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER}
     where userAddress_id = #{useraddressId,jdbcType=INTEGER}
   </update>

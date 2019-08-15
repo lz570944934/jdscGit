@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Goods" >
+  <resultMap id="GoodsResultMap" type="org.lanqiao.entity.Goods" >
     <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
     <result column="goods_number" property="goodsNumber" jdbcType="INTEGER" />
-    <result column="classify_id" property="classifyId" jdbcType="INTEGER" />
-    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="goods_note1" property="goodsNote1" jdbcType="INTEGER" />
+    <result column="goods_note2" property="goodsNote2" jdbcType="INTEGER" />
+    <collection property="setGoodsImg" resultMap="GoodsImgResultMap"></collection>
+    <collection property="setGoodsStyle" resultMap="GoodsStyleResultMap"></collection>
+    <collection property="setGoodsComment" resultMap="GoodsCommentResultMap"></collection>
   </resultMap>
-  <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_number, classify_id, brand_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from goods
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+  <resultMap id="GoodsImgResultMap" type="org.lanqiao.entity.GoodsImg" >
+    <id column="goodsImg_id" property="goodsimgId" jdbcType="INTEGER" />
+    <result column="goodsImg_url" property="goodsimgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="GoodsStyleResultMap" type="org.lanqiao.entity.GoodsStyle" >
+    <id column="goodsStyle_id" property="goodsstyleId" jdbcType="INTEGER" />
+    <result column="goodsStyle_content" property="goodsstyleContent" jdbcType="VARCHAR" />
+    <result column="goodsStyle_price" property="goodsstylePrice" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="GoodsCommentResultMap" type="org.lanqiao.entity.GoodsComment" >
+    <id column="goodsComment_id" property="goodscommentId" jdbcType="INTEGER" />
+    <result column="goodsComment_level" property="goodscommentLevel" jdbcType="INTEGER" />
+    <result column="goodsComment_content" property="goodscommentContent" jdbcType="VARCHAR" />
+    <result column="goodsComment_time" property="goodscommentTime" jdbcType="TIMESTAMP" />
+    <result column="goodsComment_url" property="goodscommentUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectByPrimaryKey" resultMap="GoodsResultMap" parameterType="java.lang.Integer" >
+    select goods_id, goods_name, goods_number from goods where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
+  <select id="select" resultMap="GoodsResultMap" >
+    select * from goods,goodsimg,goodsstyle where goods.goods_id=goodsimg.goods_id and goods.goods_id=goodsstyle.goods_id
+  </select>
+  <select id="goodsCommentCount" resultType="java.lang.Integer">
+    select count(*) from goods,goodscomment where goods.goods_id=goodscomment.goods_id group by goodscomment.goods_id
+  </select>
+
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from goods
     where goods_id = #{goodsId,jdbcType=INTEGER}
