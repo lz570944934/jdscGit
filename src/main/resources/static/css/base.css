@@ -8,6 +8,8 @@ i, em {
     font-style: normal;
 }
 
+
+
 li {
     list-style: none;
     float: left
@@ -21,6 +23,7 @@ img {
 button {
     cursor: pointer;
 }
+
 a {
     color: #666;
     text-decoration: none;
@@ -55,6 +58,186 @@ body {
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
 }
-.red{
+
+body {
+    background-color: white;
+}
+
+/*top代码*/
+
+#nav {
+    width: auto;
+    height: 31px;
+    background-color: #E3E4E5;
+    margin-top: -5px
+}
+
+.nav_center {
+    width: 1190px;
+    height: 30px;
+    margin: auto
+}
+
+.icon_loc {
+    width: 58px;
+    height: 30px;
+}
+
+.iconfont-location {
+    color: red;
+    margin: 7px 0px;
+}
+
+.icon_loc_text {
+    font-size: 13px;
+    float: right;
+    padding-top: 7px;
+    padding-right: 15px;
+}
+
+.fr {
+    float: right;
+}
+.fl{
+    float: left;
+}
+
+.nav_right {
+    padding-top: 8px;
+}
+
+ul {
+    display: inline-block;
+    float: left;
+}
+.w{
+    width: 990px;
+    margin: 0 auto;
+}
+.red {
     color: red;
 }
+
+#ttbar-login {
+    margin-right: 8px;
+    z-index: 20;
+    color: #999999;
+}
+
+li.spacer {
+    overflow: hidden;
+    margin: 5px 2px 0;
+    width: 1px;
+    height: 10px;
+    background-color: #ccc;
+}
+
+#drop_down{
+    position: relative;
+    left: 100px;
+}
+* {
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+
+
+#wrap img {
+    border: 0;
+    vertical-align: middle;
+}
+
+#fr li {
+    float: left;
+    list-style-type: none;
+}
+
+a {
+    color: #999;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+
+/*底部*/
+
+#footer {
+    height: 400px;
+    width: 990px;
+    background-color: #ffffff;
+    margin: 0px auto;
+}
+
+#service-2014 {
+    margin-bottom: 20px;
+}
+
+#service-2014 dl {
+    float: left;
+    width: 120px;
+    padding-left: 20px;
+}
+
+#service-2014 dl.fore5 {
+    width: 100px
+}
+
+#service-2014 dt {
+    padding: 6px 0;
+    font: 400 16px/24px "microsoft yahei"
+}
+
+#service-2014 dd {
+    line-height: 20px
+}
+
+#service-2014 .slogan {
+    height: 54px;
+    padding: 20px 0;
+    margin-bottom: 14px;
+    background: #F5F5F5;
+    text-align: center
+}
+
+#service-2014 .slogan img {
+    margin-right: 20px;
+    text-align: center;
+}
+
+#service-2014 .item {
+    display: inline-block;
+    left: 50%;
+    top: 20px;
+    width: 240px;
+    height: 54px;
+    text-align: center;
+    vertical-align: middle;
+    font: 400 18px/50px "microsoft yahei"
+}
+
+#coverage {
+    float: right;
+    width: 300px;
+    height: 168px;
+    background: url("../images/dt.png") no-repeat 60px -131px;
+}
+
+#coverage .dt {
+    padding: 6px 40px 15px 80px;
+    font: 400 16px/24px "microsoft yahei"
+}
+
+#coverage .dd {
+    padding: 0 40px 15px 80px
+}
+
+.copyright {
+    clear: both;
+    text-align: center;
+}
+

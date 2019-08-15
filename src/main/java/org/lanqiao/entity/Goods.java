@@ -7,6 +7,10 @@ public class Goods {
 
     private Integer goodsNumber;
 
+    private Integer goodsnote1;
+
+    private Integer goodsNote2;
+
     private Integer classifyId;
 
     private Integer brandId;
@@ -50,4 +54,12 @@ public class Goods {
     public void setBrandId(Integer brandId) {
         this.brandId = brandId;
     }
+
+    public Integer getGoodsnote1() { return goodsnote1; }
+
+    public void setGoodsnote1(Integer goodsnote1) { this.goodsnote1 = goodsnote1; }
+
+    public Integer getGoodsNote2() { return goodsNote2; }
+
+    public void setGoodsNote2(Integer goodsNote2) { this.goodsNote2 = goodsNote2; }
 }
