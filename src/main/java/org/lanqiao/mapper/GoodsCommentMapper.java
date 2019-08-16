@@ -1,7 +1,9 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.GoodsComment;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface GoodsCommentMapper {
     int deleteByPrimaryKey(Integer goodscommentId);
 

@@ -1,7 +1,9 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.GoodsStyle;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface GoodsStyleMapper {
     int deleteByPrimaryKey(Integer goodsstyleId);
 

@@ -6,6 +6,59 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/order.css">
 </head>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url:"http://localhost:8080/getItem",
+            type:"post",
+            dataType:"json",
+            success:function (data) {
+                alert(data);
+               //送货清单
+                sendMsg.goodsbuyName  =data.goodsbuyName;
+                sendMsg.goodsbuyPrice = data.goodsbuyPrice;
+                sendMsg.goodsbuyNumber = data.goodsbuyNumber;
+                //商家
+                sendMsg.brandName = data.brandName;
+
+            }
+        })
+        var addr1 = new Vue({
+            el:"#addr",
+            data:{
+                name:"王武",
+                address:"福建省 厦门市 集美区",
+                tel:"13609360360"
+            }
+        });
+        var sendMsg = new Vue({
+            el:"#ship-cont",
+            data:{
+                brandName:[],
+                goodsbuyName:[],
+                goodsbuyPrice:[],
+                goodsbuyNumber:[]
+            }
+        })
+        var totalPrice = new Vue({
+            el:".order-summary",
+            data:{
+                number:1,
+                price:7800,
+            }
+        })
+        var addr2 = new Vue({
+            el:".trade-foot",
+            data:{
+                name:"王武",
+                address:"福建省 厦门市 集美区",
+                tel:"13609360360",
+                price:7800,
+            }
+        });
+    })
+</script>
 <body>
 <!--顶部-->
 <div id="nav">
@@ -95,13 +148,13 @@
                     <ul>
                         <li>
                             <div class="selected">
-                                <span>{{message}}</span>
+                                <span>家里</span>
                                 <b></b>
                             </div>
                             <div class="addr-detail">
-                                <span class="addr-name">{{username}}</span>
+                                <span class="addr-name">{{name}}</span>
                                 <span class="addr-info">{{address}}</span>
-                                <span class="addr-tel">{{phone}}</span>
+                                <span class="addr-tel">{{tel}}</span>
                             </div>
                         </li>
                     </ul>
@@ -156,7 +209,7 @@
                         <div class="shopping-list-abctest">
                             <div class="good-list">
                                 <div class="goods-tit">
-                                    <h4>商家：{{brand}}</h4>
+                                    <h4>商家：{{brandName}}</h4>
                                 </div>
                                 <div class="goods-item">
                                     <div class="goods-sit-tit">
@@ -172,12 +225,12 @@
                                         </div>
                                         <div class="goods-msg">
                                             <div class="p-name">
-                                                <a href="">Apple 苹果 iPhone X 全面屏手机 深空灰色 全网通 64GB</a>
+                                                <a href="">{{goodsbuyName}}</a>
                                             </div>
                                             <div class="p-price">
-                                                <strong class="jd-price">￥{{price}}</strong>
+                                                <strong class="jd-price">￥{{goodsbuyPrice}}.00</strong>
                                                 <span class="p-num">
-                                                            x{{number}}
+                                                            x{{goodsbuyNumber}}
                                                         </span>
                                                 <span class="pre-state">有货</span>
                                                 <span class="gift-bean">
@@ -292,14 +345,14 @@
         </div>
 
 
-        <div class="order-summary" id="order-summary">
+        <div class="order-summary">
             <div class="static">
                 <div class="list">
                             <span>
                                 <em class="ftx-01">{{number}}</em>
                                 件商品，总商品金额：
                             </span>
-                    <em class="price">￥{{price}}</em>
+                    <em class="price">￥{{price}}.00</em>
                 </div>
                 <div class="list">
                     <span>返现：</span>
@@ -326,15 +379,15 @@
         </div>
 
 
-        <div class="trade-foot" id="trade-foot">
+        <div class="trade-foot">
             <div class="detail">
                 <div class="price-info">
                     <span>应付总额：</span>
-                    <span id="money">￥{{price}}</span>
+                    <span id="money">￥{{price}}.00</span>
                 </div>
                 <div class="consignee-info">
                     <span>寄送至： {{address}}</span>
-                    <span>收货人：{{username}} {{phone}}</span>
+                    <span>收货人：{{name}} {{tel}}</span>
                 </div>
             </div>
             <div id="check-footbar">
@@ -451,41 +504,5 @@
 </div>
 </body>
 <script src="js/vue.js"></script>
-<script>
-    var vm1 = new Vue({
-        el: "#addr",
-        data: {
-            message: '家里',
-            username: '陈同学',
-            address: '甘肃省 兰州市 西固区 XXXXXXX',
-            phone: '155****8089',
 
-        }
-    })
-    var vm2 = new Vue({
-        el: "#ship-cont",
-        data: {
-            brand: '佳沪手机旗舰店',
-            price: 7800.00,
-            number: 1,
-        }
-    })
-
-    var vm3 = new Vue({
-        el:"#trade-foot",
-        data:{
-            price:7800.00,
-            address:"甘肃省 兰州市 西固区 XXXXXXX",
-            phone:155+"****"+8089,
-        }
-    })
-
-    var vm4 = new Vue({
-        el:"#order-summary",
-        data:{
-            price:7800.00,
-            number:1
-        }
-    })
-</script>
 </html>

@@ -30,4 +30,5 @@ public class Brand {
     public void setBrandNote(String brandNote) {
         this.brandNote = brandNote == null ? null : brandNote.trim();
     }
+
 }

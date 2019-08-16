@@ -40,7 +40,7 @@ public class UserAddress {
     }
 
     public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+        this.userPhone = userPhone == null ? null : userPhone.trim();
     }
 
     public Integer getUserId() {
@@ -50,4 +50,6 @@ public class UserAddress {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+
 }
