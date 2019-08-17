@@ -5,16 +5,14 @@ import org.lanqiao.mapper.OrderItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class OrderItemServiceImpl implements OrderItemService {
+public class SendMsgServiceImpl implements SendMsgService {
+
     @Autowired
     OrderItemMapper orderItemMapper;
 
     @Override
-    public OrderItem getItems() {
-        return orderItemMapper.selectByPrimaryKey(1);
+    public OrderItem getSendMsg() {
+        return orderItemMapper.getSendMsg(1);
     }
-
 }

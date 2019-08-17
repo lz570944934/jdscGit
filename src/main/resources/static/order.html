@@ -9,54 +9,97 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <script>
     $(function () {
+        //收货人信息的ajax
         $.ajax({
-            url:"http://localhost:8080/getItem",
-            type:"post",
-            dataType:"json",
-            success:function (data) {
-                alert(data);
-               //送货清单
-                sendMsg.goodsbuyName  =data.goodsbuyName;
-                sendMsg.goodsbuyPrice = data.goodsbuyPrice;
-                sendMsg.goodsbuyNumber = data.goodsbuyNumber;
-                //商家
-                sendMsg.brandName = data.brandName;
-
-            }
-        })
-        var addr1 = new Vue({
-            el:"#addr",
-            data:{
-                name:"王武",
-                address:"福建省 厦门市 集美区",
-                tel:"13609360360"
+            url: "http://localhost:8080/getRecMsg",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                // alert(data);
+                //送货清单上
+                addrMsg1.username = data.username;
+                addrMsg1.useraddressName = data.useraddressName;
+                addrMsg1.userPhone = data.userPhone;
+                //收获确认下
+                addrMsg2.username = data.username;
+                addrMsg2.useraddressName = data.useraddressName;
+                addrMsg2.userPhone = data.userPhone;
             }
         });
-        var sendMsg = new Vue({
-            el:"#ship-cont",
+        var addrMsg1 = new Vue({
+            el: "#addr",
+            data: {
+                username: [],
+                useraddressName: [],
+                userPhone: [],
+            }
+        });
+        var addrMsg2 = new Vue({
+            el: ".consignee-info",
+            data: {
+                username: [],
+                useraddressName: [],
+                userPhone: [],
+            }
+        })
+        //送货清单的ajax
+        $.ajax({
+            url: "/SendMsg",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                // alert(data);
+                //商品信息上
+                sendMsg1.goodsbuyName = data.goodsbuyName;
+                sendMsg1.goodsbuyPrice = data.goodsbuyPrice;
+                sendMsg1.goodsbuyNumber = data.goodsbuyNumber;
+                //商品信息确认下
+                sendMsg2.goodsbuyPrice = data.goodsbuyPrice;
+                sendMsg2.goodsbuyNumber = data.goodsbuyNumber;
+                //总计
+                sendMsg3.goodsbuyNumber = data.goodsbuyNumber;
+                sendMsg3.goodsbuyPrice = data.goodsbuyPrice;
+            }
+        });
+        var sendMsg1 = new Vue({
+            el: ".goods-msg",
+            data: {
+                brandName: [],
+                goodsbuyName: [],
+                goodsbuyPrice: [],
+                goodsbuyNumber: [],
+            }
+        })
+        var sendMsg2 = new Vue({
+            el: ".list",
+            data: {
+                goodsbuyPrice: [],
+                goodsbuyNumber: [],
+            }
+        })
+        var sendMsg3 = new Vue({
+            el: "#money",
+            data: {
+                goodsbuyPrice: [],
+                goodsbuyNumber:[],
+            },
+
+        })
+        //商品品牌的ajax
+        $.ajax({
+            url:"/getBrand",
+            type: "post",
+            dataType: "json",
+            success:function (data) {
+                brand.brandName = data.brandName;
+            }
+        })
+        var brand = new Vue({
+            el:".goods-tit",
             data:{
                 brandName:[],
-                goodsbuyName:[],
-                goodsbuyPrice:[],
-                goodsbuyNumber:[]
             }
         })
-        var totalPrice = new Vue({
-            el:".order-summary",
-            data:{
-                number:1,
-                price:7800,
-            }
-        })
-        var addr2 = new Vue({
-            el:".trade-foot",
-            data:{
-                name:"王武",
-                address:"福建省 厦门市 集美区",
-                tel:"13609360360",
-                price:7800,
-            }
-        });
     })
 </script>
 <body>
@@ -152,9 +195,9 @@
                                 <b></b>
                             </div>
                             <div class="addr-detail">
-                                <span class="addr-name">{{name}}</span>
-                                <span class="addr-info">{{address}}</span>
-                                <span class="addr-tel">{{tel}}</span>
+                                <span class="addr-name">{{username}}</span>
+                                <span class="addr-info">{{useraddressName}}</span>
+                                <span class="addr-tel">{{userPhone}}</span>
                             </div>
                         </li>
                     </ul>
@@ -228,7 +271,7 @@
                                                 <a href="">{{goodsbuyName}}</a>
                                             </div>
                                             <div class="p-price">
-                                                <strong class="jd-price">￥{{goodsbuyPrice}}.00</strong>
+                                                    <strong class="jd-price">￥{{goodsbuyPrice}}.00</strong>
                                                 <span class="p-num">
                                                             x{{goodsbuyNumber}}
                                                         </span>
@@ -349,10 +392,10 @@
             <div class="static">
                 <div class="list">
                             <span>
-                                <em class="ftx-01">{{number}}</em>
+                                <em class="ftx-01">{{goodsbuyNumber}}</em>
                                 件商品，总商品金额：
                             </span>
-                    <em class="price">￥{{price}}.00</em>
+                    <em class="price">￥{{goodsbuyPrice*goodsbuyNumber}}.00</em>
                 </div>
                 <div class="list">
                     <span>返现：</span>
@@ -383,11 +426,11 @@
             <div class="detail">
                 <div class="price-info">
                     <span>应付总额：</span>
-                    <span id="money">￥{{price}}.00</span>
+                    <span id="money">￥{{goodsbuyPrice*goodsbuyNumber}}</span>
                 </div>
                 <div class="consignee-info">
-                    <span>寄送至： {{address}}</span>
-                    <span>收货人：{{name}} {{tel}}</span>
+                    <span>寄送至： {{useraddressName}}</span>
+                    <span>收货人：{{username}} 电话：{{userPhone}}</span>
                 </div>
             </div>
             <div id="check-footbar">

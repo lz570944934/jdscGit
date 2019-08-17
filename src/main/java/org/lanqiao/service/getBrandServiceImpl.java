@@ -5,15 +5,13 @@ import org.lanqiao.mapper.BrandMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class BrandServiceImpl implements BrandService {
+public class getBrandServiceImpl implements getBrandService{
     @Autowired
     BrandMapper brandMapper;
 
     @Override
     public Brand getBrand() {
-        return brandMapper.selectByPrimaryKey(1);
+        return brandMapper.getBrand(1);
     }
 }

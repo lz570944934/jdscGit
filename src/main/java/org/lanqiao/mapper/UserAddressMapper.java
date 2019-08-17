@@ -1,10 +1,8 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.UserAddress;
-import org.lanqiao.service.ReseveMsgService;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 @Repository
 public interface UserAddressMapper {
     int deleteByPrimaryKey(Integer useraddressId);
@@ -19,5 +17,5 @@ public interface UserAddressMapper {
 
     int updateByPrimaryKey(UserAddress record);
 
-    UserAddress getReseveMsg(Integer useraddressId);
+    UserAddress getRecMsg(Integer useraddressId);
 }

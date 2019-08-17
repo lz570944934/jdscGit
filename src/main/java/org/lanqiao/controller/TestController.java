@@ -4,6 +4,7 @@ import org.lanqiao.entity.Brand;
 import org.lanqiao.entity.OrderItem;
 import org.lanqiao.entity.User;
 import org.lanqiao.entity.UserAddress;
+import org.lanqiao.mapper.UserAddressMapper;
 import org.lanqiao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,54 +16,24 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    ReseveMsgService reseveMsgService;
-
-    @RequestMapping("/reMsg")
-    public UserAddress getReseveMsg(){
-
-        return reseveMsgService.getReseveMsg();
-
-
+    RecMsgService recMsgService;
+    @RequestMapping("/getRecMsg")
+    public UserAddress getRecMsg(){
+        return recMsgService.getRecMsg();
     }
-
-
-
-
 
     @Autowired
-    OrderItemService orderItemService;
-
-    //调数据库中orderItem的一条数据
-    @RequestMapping("/getItem")
-    public OrderItem getItem() {
-        return orderItemService.getItems();
+    SendMsgService sendMsgService;
+    @RequestMapping("/SendMsg")
+    public OrderItem getSendMsg(){
+        return sendMsgService.getSendMsg();
     }
 
-
-    @RequestMapping("/hello")
-    public String hello(){
-        return "hello";
-    }
-
-    //调数据库中brand的一条数据
     @Autowired
-    BrandService brandService;
-
+    getBrandService getBrandService;
     @RequestMapping("/getBrand")
     public Brand getBrand(){
-        return brandService.getBrand();
+        return getBrandService.getBrand();
     }
-
-    //调取数据库中所有的user数据
-    @Autowired
-    UserService userService;
-
-    @RequestMapping("/getUser")
-    public List<User> getUser(){
-        return userService.getAllUser();
-    }
-
-
-
 
 }

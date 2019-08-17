@@ -16,7 +16,11 @@
             <include refid="Base_Column_List" />
             from orderitem
             where orderItem_id = #{orderitemId,jdbcType=INTEGER}
-
+    </select>
+    <select id="getSendMsg" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select goodsBuy_name,goodsBuy_number,goodsBuy_price
+        from orderitem
+        where orderItem_id = #{orderitemId,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orderitem
