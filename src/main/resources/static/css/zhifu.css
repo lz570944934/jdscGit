@@ -1,0 +1,263 @@
+#shortcut {
+    height: 50px;
+    width: 1519px;
+}
+
+#middle {
+    width: 1520px;
+    height: 799px;
+
+}
+
+#w {
+    float: left;
+    position: relative;
+    width: 990px;
+    height: 50px;
+    left: 250px;
+    line-height: 60px;
+}
+
+#w_left {
+    float: left;
+    width: 400px;
+    height: 50px;
+}
+
+#w_right {
+    float: right;
+    position: relative;
+    left: 200px;
+    height: 50px;
+    width: 400px;
+}
+
+#middle_top {
+    height: 110px;
+    width: 990px;
+    margin: 0 auto;
+}
+
+#dindanhao {
+    float: left;
+    position: relative;
+    width: 650px;
+    height: 110px;
+    text-align: left;
+    line-height: 30px;
+    padding-top: 20px;
+}
+
+#middle_top_right {
+    float: right;
+    width: 200px;
+    height: 88px;
+}
+
+#mtr_money {
+    float: right;
+    text-align: right;
+    width: 150px;
+    height: 20px;
+}
+
+#xiangqing {
+    padding-top: 15px;
+    float: right;
+    text-align: right;
+    width: 150px;
+    height: 20px;
+    font: 12px "宋体";
+}
+
+#middle_middle {
+    height: 530px;
+    width: 990px;
+    margin: 0 auto;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, .13);
+}
+
+#middle_middle1 {
+    margin-top: 5px;
+    background-image: url("../images/594cd58aNdb3ee205.png");
+    background-repeat: no-repeat;
+    background-position: 110px;
+    width: 930px;
+    height: 35px;
+}
+
+#middle_middle2 {
+    margin-top: 30px;
+    width: 930px;
+    height: 52px;
+}
+
+.check {
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/pc_icon_elements.png");
+    background-repeat: no-repeat;
+    position: relative;
+    left: 65px;
+    top: 5px;
+}
+#dabaitiao{
+    float: left;
+    position: relative;
+    width:24px;
+    background-image: url("../images/BAITIAO_2.0.png");
+    background-size: 24px 30px;
+    height: 30px;
+    left: 110px;
+    top: -30px;
+}
+#middle_middle2_miaoshu{
+    float: left;
+    position: relative;
+    left:120px;
+    top: -25px;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    font-weight: bold;
+}
+#middle_middle2_miaoshu2{
+    float: left;
+    position: relative;
+    left: 200px;
+    top: -20px;
+}
+#middle_middle3 {
+    margin-top: 10px;
+    width: 930px;
+    height: 52px;
+}
+#chinabank{
+    float: left;
+    position: relative;
+    width:26px;
+    background-image: url("../images/BOC.png");
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    height: 30px;
+    left: 110px;
+    top: -30px;
+}
+#middle_middle3_miaoshu{
+    float: left;
+    position: relative;
+    left:120px;
+    top: -25px;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    font-weight: bold;
+}
+#middle_middle3_miaoshu2{
+    float: left;
+    position: relative;
+    left: 200px;
+    top: -20px;
+}
+#middle_middle4 {
+    margin-top: 5px;
+    width: 930px;
+    height: 53px;
+}
+#jinku{
+    float: left;
+    position: relative;
+    width:26px;
+    background-image: url("../images/XJKCONSUME.png");
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    height: 30px;
+    left: 110px;
+    top: -24px;
+}
+#middle_middle4_miaoshu{
+    float: left;
+    position: relative;
+    left:120px;
+    top: -25px;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    font-weight: bold;
+}
+.select{
+    width: 30px;
+    height: 30px;
+    background-image: url("../images/pc_icon_elements.png");
+    background-position: 1px -30px;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 65px;
+    top: 5px;
+}
+#middle_middle4_miaoshu2{
+    float: left;
+    position: relative;
+    left: 200px;
+    top: -20px;
+}
+#middle_middle5 {
+    margin-top: 5px;
+    width: 930px;
+    height: 56px;
+}
+#addcard{
+    position: relative;
+    float: left;
+    width: 140px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    text-align: center;
+    color: #67A4ff;
+    position: relative;
+    left:70px ;
+    line-height: 36px;
+}
+.pay{
+    float: right;
+    position: relative;
+    width: 140px;
+    right: 18px;
+    top: -50px;
+    text-align: right;
+    line-height: 26px;
+}
+#middle_middle6 {
+    width: 930px;
+    margin-top: 5px;
+    height: 177px;
+}
+#please{
+    position: relative;
+    left: 150px;
+    width: 100px;
+    height: 20px;
+}
+#paypw{
+    float: left;
+    width: 300px;
+    height: 40px;
+    position: relative;
+    left: 150px;
+    top:10px
+}
+#buttonpay{
+    position: relative;
+    left: -242px;
+    top:80px;
+    width: 220px;
+    height: 50px;
+    border-radius: 2px;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(#ff403d,#e31613);
+    color: #fff;
+    border: 1px solid #e31613
+}
+#middle_foot {
+
+}

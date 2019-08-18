@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/zhifu.css" rel="stylesheet">
+    <link href="css/jichu.css" rel="stylesheet">
+</head>
+<script src="js/vue.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: "localhost:8080/get",
+            data: {},
+            dataType: "json",
+            type: "post",
+            contentType: "application/json;charset-UTF-8",
+            success: function (data) {
+                var all = 0;
+                for (var i = 0; i < data.length; i++) {
+                    all += data[i].goodsbuyNumber * data[i].goodsbuyPrice;
+                }
+                $("#money").text(all);
+                $("#bigmoney").text(all);
+            }
+        })
+    })
+    $(function () {
+        $.ajax({
+            url:"localhost:8080/setsj",
+        })
+
+    })
+</script>
+<body>
+<div id="shortcut">
+    <div id="w">
+        <div id="w_left">
+            <img src="images/logo.png" height="28" width="170"/>
+        </div>
+        <div id="w_right">
+            <ul>
+                <li><a>name&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp</a></li>
+                <li><a>我的订单&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp</a></li>
+                <li><a>支付帮助</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="middle">
+    <div id="middle_top">
+        <div id="middle_top_left">
+            <img src="images/二维码.png" height="100" width="100" style="position:relative; float:left;"/>
+            <div id="dindanhao">
+                <ul>
+                    <li style="font-size: 14px;font-weight: 400;color: #333">
+                        订单提交成功，请尽快付款！订单号：100883365121
+                    </li>
+                    <li>推荐使用&nbsp&nbsp&nbsp&nbsp扫码支付 &nbsp&nbsp| &nbsp&nbsp请您在<span style="color: red;">24</span>小时内完成支付，否则订单会被自动取消(库存紧俏订单请参见详情页时限)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="middle_top_right">
+            <div id="mtr_money">
+                <span>应付金额</span>
+                <span style="color: red; font-size:18px;" id="bigmoney">44</span>
+                <span>元</span>
+            </div>
+            <div id="xiangqing">
+                <a style="color: #67A4ff;">订单详情</a>
+            </div>
+        </div>
+    </div>
+    <div id="middle_middle">
+        <div id="middle_middle1">
+            <img src="images/pc_icon_title-jdpay.png" height="35" width="102"
+                 style="position: relative; left: -750px;"/>
+        </div>
+        <div id="middle_middle2">
+            <div class="check"></div>
+            <div id="dabaitiao"></div>
+            <div id="middle_middle2_miaoshu" style="font-size:16px;font-family:We"><a>打白条</a></div>
+            <div id="middle_middle2_miaoshu2"><a>可用额度&nbsp&nbsp6500.00元</a></div>
+        </div>
+        <div id="middle_middle3">
+            <div class="check"></div>
+            <div id="chinabank"></div>
+            <div id="middle_middle3_miaoshu" style="font-size:16px;font-family:We"><a>中国银行</a></div>
+        </div>
+        <div id="middle_middle4">
+            <div class="select"></div>
+            <div id="jinku"></div>
+            <div id="middle_middle4_miaoshu" style="font-size:16px;font-family:We"><a>余额</a></div>
+            <div id="middle_middle4_miaoshu2">可用额度&nbsp&nbsp<a>6500.00</a>元</div>
+            <div class="pay">支付&nbsp<span style="color:#E31614;font-size:18px;" id="money">sss</span>&nbsp元</div>
+        </div>
+        <div id="middle_middle5">
+            <div id="addcard"><a>添加新卡/网银支付</a></div>
+        </div>
+        <div id="middle_middle6">
+            <div id="please">
+                <li>请输入支付密码</li>
+            </div>
+            <input id="paypw" type="password">
+            <li style="position: relative;left: 200px;top: 25px">忘记支付密码？</li>
+            <button id="buttonpay">立即支付</button>
+        </div>
+    </div>
+    <div id="middle_foot"></div>
+</div>
+<div id="foot"></div>
+</body>
+</html>

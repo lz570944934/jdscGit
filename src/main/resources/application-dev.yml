@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:org/lanqiao/dao/*.xml
+  type-aliases-package: org.lanqiao.entity
+
+#showSql
+logging:
+  level:
+    org:
+      lanqiao:
+        dao : debug

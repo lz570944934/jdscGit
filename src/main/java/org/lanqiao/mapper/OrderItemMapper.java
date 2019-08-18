@@ -1,7 +1,11 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.OrderItem;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer orderitemId);
 
@@ -14,4 +18,8 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
+
+    List<OrderItem> Get();
+
+    int updateitem();
 }

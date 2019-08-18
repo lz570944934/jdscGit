@@ -8,11 +8,24 @@
     <result column="goodsBuy_price" property="goodsbuyPrice" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="UserMapper" type="org.lanqiao.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="INTEGER" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_balance" property="userBalance" jdbcType="INTEGER" />
+    <result column="user_head" property="userHead" jdbcType="VARCHAR" />
+    <result column="user_level" property="userLevel" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Base_Column_List" >
     orderItem_id, goodsBuy_name, goodsBuy_number, goodsBuy_price, order_id
   </sql>
+  <select id="Get" resultMap="BaseResultMap">
+        select * from OrderItem ;
+    </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from orderitem
     where orderItem_id = #{orderitemId,jdbcType=INTEGER}
@@ -64,6 +77,9 @@
       </if>
     </trim>
   </insert>
+  <update id="updateitem" parameterType="org.lanqiao.entity.OrderItem" >
+        update User set User_balance=100;
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.OrderItem" >
     update orderitem
     <set >
