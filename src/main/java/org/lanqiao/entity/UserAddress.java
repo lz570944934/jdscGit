@@ -50,4 +50,6 @@ public class UserAddress {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+
 }

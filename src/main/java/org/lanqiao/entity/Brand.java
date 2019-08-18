@@ -35,6 +35,7 @@ public class Brand {
         this.brandNote = brandNote == null ? null : brandNote.trim();
     }
 
+
     public Set<Goods> getSetGoods() {
         return setGoods;
     }

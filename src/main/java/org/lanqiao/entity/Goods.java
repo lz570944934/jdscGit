@@ -21,6 +21,10 @@ public class Goods {
     private String goodsNote1;
     private String goodsNote2;
 
+    private String goodsNote1;
+
+    private String goodsNote2;
+
     public Integer getGoodsId() {
         return goodsId;
     }
@@ -115,5 +119,21 @@ public class Goods {
 
     public void setSetGoodsComment(Set<GoodsComment> setGoodsComment) {
         this.setGoodsComment = setGoodsComment;
+    }
+
+    public String getGoodsNote1() {
+        return goodsNote1;
+    }
+
+    public void setGoodsNote1(String goodsNote1) {
+        this.goodsNote1 = goodsNote1 == null ? null : goodsNote1.trim();
+    }
+
+    public String getGoodsNote2() {
+        return goodsNote2;
+    }
+
+    public void setGoodsNote2(String goodsNote2) {
+        this.goodsNote2 = goodsNote2 == null ? null : goodsNote2.trim();
     }
 }

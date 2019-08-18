@@ -1,7 +1,10 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.User;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -14,4 +17,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> getAllUser();
 }

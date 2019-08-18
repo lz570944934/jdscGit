@@ -49,11 +49,11 @@
 			指定列的java数据类型
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table> -->
-		<!--<table tableName="users" domainObjectName="User"-->
-			<!--enableCountByExample="false" enableDeleteByExample="false"-->
-			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="true" />-->
-		<!--</table>-->
+<!--		<table tableName="users" domainObjectName="User"-->
+<!--			enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="true" />-->
+<!--		</table>-->
 		<!--<table tableName="userinfo" domainObjectName="UserInfo"-->
 			<!--enableCountByExample="false" enableDeleteByExample="false"-->
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
@@ -69,14 +69,13 @@
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="flase" />-->
 		<!--</table>-->
-		<!--<table tableName="goods" domainObjectName="Goods"-->
-			<!--enableCountByExample="false" enableDeleteByExample="false"-->
-			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="flase" />-->
-		<!--</table>-->
+<!--		<table tableName="goods" domainObjectName="Goods"-->
+<!--			enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="flase" />-->
+<!--		</table>-->
 		<!--<table tableName="goodsorder" domainObjectName="GoodsOrder"-->
-			   <!--enableCountByExample="false" enableDeleteByExample="false"-->
-			   <!--enableSelectByExample="false" enableUpdateByExample="false">-->
+			   <!--enableCountByExample="false" enableDeleteByExample="false"-->		<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="flase" />-->
 		<!--</table>-->
 		<!--<table tableName="goodscart" domainObjectName="GoodsCart"-->
