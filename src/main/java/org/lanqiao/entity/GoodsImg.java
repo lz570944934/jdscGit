@@ -5,7 +5,9 @@ public class GoodsImg {
 
     private String goodsimgUrl;
 
-    private Integer goodsId;
+//    private Integer goodsId;
+
+    private Goods goods;
 
     public Integer getGoodsimgId() {
         return goodsimgId;
@@ -23,11 +25,19 @@ public class GoodsImg {
         this.goodsimgUrl = goodsimgUrl == null ? null : goodsimgUrl.trim();
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+//    public Integer getGoodsId() {
+//        return goodsId;
+//    }
+//
+//    public void setGoodsId(Integer goodsId) {
+//        this.goodsId = goodsId;
+//    }
+
+    public Goods getGoods() {
+        return goods;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 }

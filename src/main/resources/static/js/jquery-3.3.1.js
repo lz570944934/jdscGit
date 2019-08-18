@@ -3980,7 +3980,7 @@
         return letter.toUpperCase();
     }
 
-// Convert dashed to camelCase; used by the css and data modules
+// Convert dashed to camelCase; used by the CS and data modules
 // Support: IE <=9 - 11, Edge 12 - 15
 // Microsoft forgot to hump their vendor prefix (#9572)
     function camelCase(string) {
@@ -4527,7 +4527,7 @@
             // Halve the iteration target value to prevent interference from CSS upper bounds (gh-2144)
             initial = initial / 2;
 
-            // Trust units reported by jQuery.css
+            // Trust units reported by jQuery.CS
             unit = unit || initialInUnit[3];
 
             // Iteratively approximate from a nonzero starting point
@@ -6158,8 +6158,8 @@
         computed = computed || getStyles(elem);
 
         // getPropertyValue is needed for:
-        //   .css('filter') (IE 9 only, #12537)
-        //   .css('--customProperty) (#3144)
+        //   .CS('filter') (IE 9 only, #12537)
+        //   .CS('--customProperty) (#3144)
         if (computed) {
             ret = computed.getPropertyValue(name) || computed[name];
 
@@ -6235,7 +6235,7 @@
         cssPrefixes = ["Webkit", "Moz", "ms"],
         emptyStyle = document.createElement("div").style;
 
-// Return a css property mapped to a potentially vendor prefixed property
+// Return a CS property mapped to a potentially vendor prefixed property
     function vendorPropName(name) {
 
         // Shortcut for names that are not vendor prefixed
@@ -6739,7 +6739,7 @@
                     return tween.elem[tween.prop];
                 }
 
-                // Passing an empty string as a 3rd parameter to .css will automatically
+                // Passing an empty string as a 3rd parameter to .CS will automatically
                 // attempt a parseFloat and fallback to a string if the parse fails.
                 // Simple values such as "10px" are parsed to Float;
                 // complex values such as "rotate(1rad)" are returned as-is.
@@ -10108,7 +10108,7 @@
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 // Blink bug: https://bugs.chromium.org/p/chromium/issues/detail?id=589347
 // getComputedStyle returns percent when specified for top/left/bottom/right;
-// rather than make the css module depend on the offset module, just check for it here
+// rather than make the CS module depend on the offset module, just check for it here
     jQuery.each(["top", "left"], function (i, prop) {
         jQuery.cssHooks[prop] = addGetHookIf(support.pixelPosition,
             function (elem, computed) {

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品搜索</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            // var pageNum = 1;
+            var goods = new Vue({
+                el:"#body2right",
+                data:{
+                    imgs:[],//显示商品信息
+                    count:0,//商品数量
+                    page:0,//总页数
+                    pageNum:1,//当前页数
+                    fenyes:[],//分几页
+                    goodsInfo:''
+                },
+                methods:{
+                    nextPage:function () {
+                        if(goods.pageNum==goods.page){
+                            alert("当前为最后一页");
+                        }else{
+                            goods.pageNum++;
+                            goodsPage();
+                        }
+                    },
+                    prePage:function () {
+                        if(goods.pageNum==1){
+                            alert("当前为第一页");
+                        }else{
+                            goods.pageNum--;
+                            goodsPage();
+                        }
+                    },
+                    fenyePage:function (index) {
+                        // alert(index+1);
+                        goods.pageNum=index+1;
+                        goodsPage();
+                    },
+                    fenyeJump:function () {
+                        // alert(goods.pageNum);
+                        // goods.pageNum=this.$refs.getPageNum.value;
+                        if(goods.pageNum>goods.page){
+                            alert("超过最大页数");
+                            goods.pageNum=goods.page;
+                        }
+                        goodsPage();
+                    },
+                    findSearch:function () {
+                        goods.pageNum=1;
+                        goodsPage();
+                    }
+                }
+            });
+            var goodsSelect = new Vue({
+                el:"#body2left",
+                data:{
+                    imgs:[]
+                }
+            });
+            goodsPage();
+
+            // 函数
+            function goodsPage() {
+                $.ajax({
+                    url:'http://localhost:8080/searchgoodspage',
+                    type:"post",
+                    dataType:"json",
+                    data:{"pageNum":goods.pageNum,"pageSize":4,"goodsInfo":goods.goodsInfo},
+                    success:function (data) {
+                        goods.imgs.splice(0,goods.imgs.length);//清空商品数组
+                        goods.fenyes.splice(0,goods.fenyes.length);//清空分页数组
+                        goodsSelect.imgs.splice(0,goodsSelect.imgs.length);//清空商品精选数组
+                        var goodsList=data.goodsList;//得到商品信息
+                        var goodsComment=data.goodsComment;//得到商品评论数量
+                        var goodsCount=data.goodsCount;//得到商品数量
+                        var page=data.page;//得到总页数
+                        goods.count=goodsCount;
+                        goods.page=page;
+                        for(var i=0;i<goodsList.length;i++){
+                            // var setGoodsImg=data[i].setGoodsImg;
+                            // var setGoodsStyle=data[i].setGoodsStyle;
+                            var setGoodsImg=goodsList[i].setGoodsImg;//得到商品里的图片信息
+                            var setGoodsStyle=goodsList[i].setGoodsStyle;//得到商品里的格式信息
+                            goods.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                                goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                                goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                            // goodsComment:goodsComment[i]!=null?goodsComment[i]:0
+                        }
+                        for(var i=0;i<goodsList.length&&i<6;i++){
+                            var setGoodsImg=goodsList[i].setGoodsImg;
+                            var setGoodsStyle=goodsList[i].setGoodsStyle;
+                            goodsSelect.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                                goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                                goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                        }
+                        for(var i=0;i<page;i++){
+                            goods.fenyes.push({page:i+1});
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" href="CS/base.css">
+    <link rel="stylesheet" href="CS/head.css">
+    <link rel="stylesheet" href="CS/search.css">
+</head>
+<body>
+    <!--头部-->
+    <div id="head">
+        <div id="head_top1">
+            <div id="head_top">
+                <span><i class="iconfont"></i>京东首页</span>
+                <span><i class="iconfont"></i>福建</span>
+                <div id="head_top_right">
+                    <ul>
+                        <li class="head_top_right"><a>手机京东</a></li>
+                        <li class="head_top_right xian"><a>网站导航&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a>客户服务&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a>企业采购&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a class="red_font">京东会员&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a>我的京东&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a>我的订单&nbsp;&nbsp;&nbsp;</a></li>
+                        <li class="head_top_right xian"><a>你好，请登录</a> <a class="red_font">免费注册&nbsp;&nbsp;&nbsp;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="head_bottom">
+            <div id="head_bottom_left"></div>
+            <div id="head_bottom_right">
+                <div id="search">
+                    <div id="search1">
+                        <div id="search1_1">
+                            <input type="text" size="70px" id="key">
+                            <img src="image/zhaoxiangji.png">
+                        </div>
+                        <a href="QQQ.html"><button clstag="h|keycount|head|search_a" class="button" aria-label="搜索">
+                            <i class="iconfont"></i>
+                        </button></a>
+                        <div id="search1_2">
+                            <ul>
+                                <li style="color: red">优惠三百元</li>
+                                <li><a>正品好药</a></li>
+                                <li><a>空调钜惠</a></li>
+                                <li><a>开关五折</a></li>
+                                <li><a>美妆新品</a></li>
+                                <li><a>鞋靴清仓</a></li>
+                                <li><a>每100-50</a></li>
+                                <li><a>纸品生活</a></li>
+                                <li><a>养殖消毒</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="search2">
+                        <div id="search2_1">
+                            <i class="iconfont red"></i>
+                            <i class="ci-count">0</i>
+                        </div>
+                        <div id="search2_2">
+                            我的购物车
+                        </div>
+                    </div>
+                    <div id="search3"></div>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li style="color: red">秒杀</li>
+                        <li style="color: red">优惠卷</li>
+                        <li><a>PLUS会员</a></li>
+                        <li><a>品牌闪购</a></li>
+                        <li><a>拍卖</a></li>
+                        <li><a>京东时尚</a></li>
+                        <li><a>京东超市</a></li>
+                        <li><a>京东生鲜</a></li>
+                        <li><a>海囤全球</a></li>
+                        <li><a>京东金融</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr color="red">
+    <!--主体-->
+    <div id="body_border">
+        <div id="bread">
+            全部结果 > "电脑"
+        </div>
+        <div id="body1">
+            <div id="body1_1">
+                <div id="body1_1left">品牌:</div>
+                <div id="body1_1right">
+                    <ul>
+                        <li>
+                            <img src="image/body1_1right1.jpg">
+                        </li>
+                        <li>
+                            &nbsp;<img src="image/body1_1right2.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right3.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right4.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right5.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right6.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right7.png">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right8.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right9.png">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right10.jpg">
+                        </li>
+                        <li>
+                            &nbsp;<img src="image/body1_1right11.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right12.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right13.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right14.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right15.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right16.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right17.jpg">
+                        </li>
+                        <li>
+                            <img src="image/body1_1right18.png">
+                        </li>
+                    </ul>
+                </div>
+                <div id="body1_1more1">更多</div>
+                <div id="body1_1more2">多选</div>
+            </div>
+            <div class="body1_2">
+                <div class="body1_2left">电脑整机:</div>
+                <div class="body1_2rignt">
+                    <ul>
+                        <li>台式机</li>
+                        <li>笔记本</li>
+                        <li>一体机</li>
+                        <li>游戏本</li>
+                        <li>平板电脑</li>
+                        <li>服务器/工作站</li>
+                        <li>笔记本配件</li>
+                    </ul>
+                </div>
+                <div class="body1_2more">更多</div>
+            </div>
+            <div class="body1_2">
+                <div class="body1_2left">电脑配件:</div>
+                <div class="body1_2rignt">
+                    <ul>
+                        <li>组装电脑</li>
+                        <li>显示器</li>
+                        <li>电脑配件套装</li>
+                        <li>显卡</li>
+                        <li>CPU</li>
+                        <li>内存</li>
+                        <li>机箱</li>
+                    </ul>
+                </div>
+                <div class="body1_2more">更多</div>
+            </div>
+            <div class="body1_2">
+                <div class="body1_2left">二手电脑整机:</div>
+                <div class="body1_2rignt">
+                    <ul>
+                        <li>二手台式机</li>
+                        <li>二手笔记本</li>
+                        <li>二手一体机</li>
+                        <li>二手平板电脑</li>
+                        <li>二手笔记本配件</li>
+                        <li>二手电脑配件</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="body1_3">
+                <div id="body1_3left">高级选项:</div>
+                <div id="body1_3right">
+                    <ul>
+                        <li>处理器</li>
+                        <li>内存容量</li>
+                        <li>硬盘容量</li>
+                        <li>屏幕尺寸</li>
+                        <li>系统</li>
+                        <li>优选服务</li>
+                        <li>显卡</li>
+                        <li>系列</li>
+                        <li>屏幕类型</li>
+                        <li>其他分类</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="body2">
+            <div id="body2left">
+                <h3>商品精选</h3>
+                <span id="guanggao"><img src="image/guanggao.gif"></span>
+                <ul>
+                    <li v-for="(img,index) in imgs">
+                        <img v-bind:src="img.goodsimgUrl">
+                        <p class="body2left_p">￥{{img.goodsstylePrice}}.00</p>
+                        <p>{{img.goodsNote1}}</p>
+                        <p>已有<span>{{img.goodsComment}}+</span>人评价</p>
+                    </li>
+                    <!--<li>-->
+                        <!--<img src="image/shangpinjingxuan2.jpg">-->
+                        <!--<p class="body2left_p">￥1299.00</p>-->
+                        <!--<p>星惠佳四核/i5/i7升八核8G独显游戏办公吃鸡台式</p>-->
+                        <!--<p>已有<span>1.3万+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="image/shangpinjingxuan3.jpg">-->
+                        <!--<p class="body2left_p">￥2999.00</p>-->
+                        <!--<p>纵横卓创 九代酷睿i5 9400F/2G显卡创意平面设计师工业绘图电商美工影楼广告组装台式</p>-->
+                        <!--<p>已有<span>1000+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="image/shangpinjingxuan4.jpg">-->
+                        <!--<p class="body2left_p">￥2499.00</p>-->
+                        <!--<p>惠普（HP）小欧22-c013 高清一体机</p>-->
+                        <!--<p>已有<span>1.6万+</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="image/shangpinjingxuan5.jpg">-->
+                        <!--<p class="body2left_p">￥7788.00</p>-->
+                        <!--<p>华橙i7-9700K高端水冷游戏</p>-->
+                        <!--<p>已有<span>0</span>人评价</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="image/shangpinjingxuan6.jpg">-->
+                        <!--<p class="body2left_p">￥1999.00</p>-->
+                        <!--<p>i5 8400升E5 2450八核/RX580 8G独显16G内存吃鸡游戏台式</p>-->
+                        <!--<p>已有<span>80+</span>人评价</p>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div id="body2right">
+                <div id="body2right_1">
+                    <ul>
+                        <li class="body2right_1_red">综合 <div class="body2right_1_img whiteimg"></div></li>
+                        <li>销量 <div class="body2right_1_img"></div></li>
+                        <li>评论数 <div class="body2right_1_img"></div></li>
+                        <li>新品 <div class="body2right_1_img"></div></li>
+                        <li>价格 <div class="body2right_1_img"></div></li>
+                    </ul>
+                    <img src="image/zhuxingtu.png">
+                    <div id="next_page" @click="nextPage">></div>
+                    <div id="pre_page" @click="prePage"><</div>
+                    <div id="body2right_1_pageNumber">
+                        <span>共{{count}}件商品</span>
+                        <span><b>{{pageNum}}</b>/{{page}}</span>
+                    </div>
+                </div>
+                <div id="body2right_2">
+                    <span>配送至</span>
+                    <select name="address" id="address">
+                    <option value="1">福建厦门市集美区</option>
+                    <option value="2">福建厦门市思明区</option>
+                    <option value="3">福建厦门市湖里区</option>
+                    <option value="4">福建厦门市杏林区</option>
+                    <option value="5">福建厦门市同安区</option>
+                    </select>
+                    <ul>
+                        <li><input type="checkbox">京东物流</li>
+                        <li><input type="checkbox">211限时达</li>
+                        <li><input type="checkbox">货到付款</li>
+                        <li><input type="checkbox">仅显示有货</li>
+                        <li><input type="checkbox">海囤全球</li>
+                        <li><input type="checkbox">可配送全球</li>
+                        <li><input type="checkbox">新品</li>
+                    </ul>
+                    <div id="body2right_2_search">
+                        <input type="text" placeholder="请输入商品信息" v-model="goodsInfo"><input type="button" value="确定" @click="findSearch">
+                    </div>
+                </div>
+                <div id="body2right_3">
+                    <div class="body2right_3_shangpin" v-for="(img,index) in imgs">
+                        <img v-bind:src="img.goodsimgUrl">
+                        <!--{{img.goodsimgUrl}}-->
+                        <p class="body2right_3_p">￥{{img.goodsstylePrice}}.00</p>
+                        <p>{{img.goodsNote1}}</p>
+                        <p>已有<span>{{img.goodsComment}}+</span>人评价<img src="image/kefu.png"></p>
+                        <ul>
+                            <li style="width: 60px"><div id="body2right_3_shangpin_gouwuche1"></div><span>对比</span></li>
+                            <li style="width: 60px"><div id="body2right_3_shangpin_gouwuche2"></div><span>关注</span></li>
+                            <li style="width: 90px"><div id="body2right_3_shangpin_gouwuche3"></div><span>购物车</span></li>
+                        </ul>
+                    </div>
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="image/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="image/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="image/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <!--<div class="body2right_3_shangpin">-->
+                        <!--<img src="image/shangpin1.jpg">-->
+                    <!--</div>-->
+                    <div id="body2right_3_zuihou">
+                        <div id="fenye">
+                            <a @click="prePage">上一页</a>
+                            <!--v-bind:id="pageNum === index+1 ? 'fenye_red' : ''"-->
+                            <a v-for="(fenye,index) in fenyes" v-bind:id="pageNum === index+1 ? 'fenye_red' : ''" @click="fenyePage(index)">{{fenye.page}}</a>
+                            <a @click="nextPage">下一页</a>
+                            <span>共{{page}}页</span>
+                            <span>到第<input type="text" size="1px" v-model="pageNum">页</span><input type="button" value="确定" @click="fenyeJump">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--尾部-->
+    <div id="footer">
+        <iframe id="footerFrame" name="footerFrame" src="footer.html" width="1400" height="400" frameborder="0" scrolling="no" ></iframe>
+    </div>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.GoodsMapper" >
+  <resultMap id="GoodsResultMap" type="org.lanqiao.entity.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_number" property="goodsNumber" jdbcType="INTEGER" />
+    <result column="goods_note1" property="goodsNote1" jdbcType="INTEGER" />
+    <result column="goods_note2" property="goodsNote2" jdbcType="INTEGER" />
+    <collection property="setGoodsImg" resultMap="GoodsImgResultMap"></collection>
+    <collection property="setGoodsStyle" resultMap="GoodsStyleResultMap"></collection>
+    <collection property="setGoodsComment" resultMap="GoodsCommentResultMap"></collection>
+  </resultMap>
+  <resultMap id="GoodsImgResultMap" type="org.lanqiao.entity.GoodsImg" >
+    <id column="goodsImg_id" property="goodsimgId" jdbcType="INTEGER" />
+    <result column="goodsImg_url" property="goodsimgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="GoodsStyleResultMap" type="org.lanqiao.entity.GoodsStyle" >
+    <id column="goodsStyle_id" property="goodsstyleId" jdbcType="INTEGER" />
+    <result column="goodsStyle_content" property="goodsstyleContent" jdbcType="VARCHAR" />
+    <result column="goodsStyle_price" property="goodsstylePrice" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="GoodsCommentResultMap" type="org.lanqiao.entity.GoodsComment" >
+    <id column="goodsComment_id" property="goodscommentId" jdbcType="INTEGER" />
+    <result column="goodsComment_level" property="goodscommentLevel" jdbcType="INTEGER" />
+    <result column="goodsComment_content" property="goodscommentContent" jdbcType="VARCHAR" />
+    <result column="goodsComment_time" property="goodscommentTime" jdbcType="TIMESTAMP" />
+    <result column="goodsComment_url" property="goodscommentUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectByPrimaryKey" resultMap="GoodsResultMap" parameterType="java.lang.Integer" >
+    select goods_id, goods_name, goods_number from goods where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <select id="select" resultMap="GoodsResultMap">
+    select * from goods,goodsimg,goodsstyle where goods.goods_id=goodsimg.goods_id and goods.goods_id=goodsstyle.goods_id
+    <if test="goodsInfo != null ">
+      and (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+    limit #{num},#{pageSize}
+  </select>
+  <select id="goodsCommentCount" resultType="java.lang.Integer">
+    select count(*) from goods,goodscomment where goods.goods_id=goodscomment.goods_id
+    <if test="goodsInfo != null ">
+      and (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+    group by goodscomment.goods_id
+    limit #{num},#{pageSize}
+  </select>
+  <select id="goodsCount" resultType="java.lang.Integer">
+    select count(*) from goods
+    <if test="goodsInfo != null ">
+      where (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+  </select>
+  <select id="find" resultMap="GoodsResultMap" parameterType="java.lang.String">
+    select * from goods,goodsimg,goodsstyle
+    where
+    goods.goods_id=goodsimg.goods_id and goods.goods_id=goodsstyle.goods_id
+    <if test="goodsInfo != null">
+    and (goods.goods_name like concat('%',#{goodsInfo},'%') or goods.goods_note1 like concat('%',#{goodsInfo},'%'))
+    </if>
+  </select>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Goods" >
+    insert into goods (goods_id, goods_name, goods_number, 
+      classify_id, brand_id)
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsNumber,jdbcType=INTEGER}, 
+      #{classifyId,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="classifyId != null" >
+        classify_id,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="classifyId != null" >
+        #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Goods" >
+    update goods
+    <set >
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="classifyId != null" >
+        classify_id = #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Goods" >
+    update goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      classify_id = #{classifyId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

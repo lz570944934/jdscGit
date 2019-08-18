@@ -1,4 +1,6 @@
 package org.lanqiao.entity;
+//.,
+import java.util.Set;
 
 public class Brand {
     private Integer brandId;
@@ -6,6 +8,8 @@ public class Brand {
     private String brandName;
 
     private String brandNote;
+
+    private Set<Goods> setGoods;
 
     public Integer getBrandId() {
         return brandId;
@@ -31,4 +35,12 @@ public class Brand {
         this.brandNote = brandNote == null ? null : brandNote.trim();
     }
 
+
+    public Set<Goods> getSetGoods() {
+        return setGoods;
+    }
+
+    public void setSetGoods(Set<Goods> setGoods) {
+        this.setGoods = setGoods;
+    }
 }
