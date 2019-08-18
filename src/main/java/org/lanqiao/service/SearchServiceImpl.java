@@ -19,13 +19,27 @@ public class SearchServiceImpl implements SearchService{
     }
 
     @Override
-    public List<Goods> searchGoods() {
-        return goodsMapper.select();
+    public List<Goods> searchGoods(Integer pageNum,Integer pageSize,String goodsInfo) {
+        return goodsMapper.select((pageNum-1)*pageSize,pageSize,goodsInfo);
+    }
+//    @Override
+//    public List<Goods> searchGoods() {
+//        return goodsMapper.select();
+//    }
+
+    @Override
+    public List<Integer> goodsCommentCount(Integer pageNum,Integer pageSize,String goodsInfo) {
+        return goodsMapper.goodsCommentCount((pageNum-1)*pageSize,pageSize,goodsInfo);
     }
 
     @Override
-    public List<Integer> goodsCommentCount(int pageNum,int pageSize) {
-        return goodsMapper.goodsCommentCount();
+    public int goodsCount(String goodsInfo) {
+        return goodsMapper.goodsCount(goodsInfo);
+    }
+
+    @Override
+    public List<Goods> find(String goodsInfo) {
+        return goodsMapper.find(goodsInfo);
     }
 //    @Override
 //    public List<Integer> goodsCommentCount() {
