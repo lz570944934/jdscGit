@@ -30,11 +30,34 @@
   <select id="selectByPrimaryKey" resultMap="GoodsResultMap" parameterType="java.lang.Integer" >
     select goods_id, goods_name, goods_number from goods where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
-  <select id="select" resultMap="GoodsResultMap" >
+  <select id="select" resultMap="GoodsResultMap">
     select * from goods,goodsimg,goodsstyle where goods.goods_id=goodsimg.goods_id and goods.goods_id=goodsstyle.goods_id
+    <if test="goodsInfo != null ">
+      and (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+    limit #{num},#{pageSize}
   </select>
   <select id="goodsCommentCount" resultType="java.lang.Integer">
-    select count(*) from goods,goodscomment where goods.goods_id=goodscomment.goods_id group by goodscomment.goods_id
+    select count(*) from goods,goodscomment where goods.goods_id=goodscomment.goods_id
+    <if test="goodsInfo != null ">
+      and (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+    group by goodscomment.goods_id
+    limit #{num},#{pageSize}
+  </select>
+  <select id="goodsCount" resultType="java.lang.Integer">
+    select count(*) from goods
+    <if test="goodsInfo != null ">
+      where (goods.goods_name like CONCAT('%',#{goodsInfo},'%') or goods.goods_note1 like CONCAT('%',#{goodsInfo},'%'))
+    </if>
+  </select>
+  <select id="find" resultMap="GoodsResultMap" parameterType="java.lang.String">
+    select * from goods,goodsimg,goodsstyle
+    where
+    goods.goods_id=goodsimg.goods_id and goods.goods_id=goodsstyle.goods_id
+    <if test="goodsInfo != null">
+    and (goods.goods_name like concat('%',#{goodsInfo},'%') or goods.goods_note1 like concat('%',#{goodsInfo},'%'))
+    </if>
   </select>
 
 

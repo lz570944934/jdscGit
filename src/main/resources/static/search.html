@@ -6,35 +6,52 @@
     <script src="js/jquery-3.4.1.js"></script>
     <script>
         $(function () {
-            $.ajax({
-                url:'http://localhost:8080/searchgoods',
-                type:"post",
-                dataType:"json",
-                success:function (data) {
-                    var goodsList=data.goodsList;
-                    var goodsComment=data.goodsComment;
-                    for(var i=0;i<goodsList.length;i++){
-                        // var setGoodsImg=data[i].setGoodsImg;
-                        // var setGoodsStyle=data[i].setGoodsStyle;
-                        var setGoodsImg=goodsList[i].setGoodsImg;
-                        var setGoodsStyle=goodsList[i].setGoodsStyle;
-                        goods.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
-                            goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
-                            goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
-                    }
-                    for(var i=0;i<goodsList.length&&i<6;i++){
-                        var setGoodsImg=goodsList[i].setGoodsImg;
-                        var setGoodsStyle=goodsList[i].setGoodsStyle;
-                        goodsSelect.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
-                            goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
-                            goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
-                    }
-                }
-            });
+            // var pageNum = 1;
             var goods = new Vue({
-                el:"#body2right_3",
+                el:"#body2right",
                 data:{
-                    imgs:[]
+                    imgs:[],//显示商品信息
+                    count:0,//商品数量
+                    page:0,//总页数
+                    pageNum:1,//当前页数
+                    fenyes:[],//分几页
+                    goodsInfo:''
+                },
+                methods:{
+                    nextPage:function () {
+                        if(goods.pageNum==goods.page){
+                            alert("当前为最后一页");
+                        }else{
+                            goods.pageNum++;
+                            goodsPage();
+                        }
+                    },
+                    prePage:function () {
+                        if(goods.pageNum==1){
+                            alert("当前为第一页");
+                        }else{
+                            goods.pageNum--;
+                            goodsPage();
+                        }
+                    },
+                    fenyePage:function (index) {
+                        // alert(index+1);
+                        goods.pageNum=index+1;
+                        goodsPage();
+                    },
+                    fenyeJump:function () {
+                        // alert(goods.pageNum);
+                        // goods.pageNum=this.$refs.getPageNum.value;
+                        if(goods.pageNum>goods.page){
+                            alert("超过最大页数");
+                            goods.pageNum=goods.page;
+                        }
+                        goodsPage();
+                    },
+                    findSearch:function () {
+                        goods.pageNum=1;
+                        goodsPage();
+                    }
                 }
             });
             var goodsSelect = new Vue({
@@ -43,7 +60,49 @@
                     imgs:[]
                 }
             });
-        })
+            goodsPage();
+
+            // 函数
+            function goodsPage() {
+                $.ajax({
+                    url:'http://localhost:8080/searchgoodspage',
+                    type:"post",
+                    dataType:"json",
+                    data:{"pageNum":goods.pageNum,"pageSize":4,"goodsInfo":goods.goodsInfo},
+                    success:function (data) {
+                        goods.imgs.splice(0,goods.imgs.length);//清空商品数组
+                        goods.fenyes.splice(0,goods.fenyes.length);//清空分页数组
+                        goodsSelect.imgs.splice(0,goodsSelect.imgs.length);//清空商品精选数组
+                        var goodsList=data.goodsList;//得到商品信息
+                        var goodsComment=data.goodsComment;//得到商品评论数量
+                        var goodsCount=data.goodsCount;//得到商品数量
+                        var page=data.page;//得到总页数
+                        goods.count=goodsCount;
+                        goods.page=page;
+                        for(var i=0;i<goodsList.length;i++){
+                            // var setGoodsImg=data[i].setGoodsImg;
+                            // var setGoodsStyle=data[i].setGoodsStyle;
+                            var setGoodsImg=goodsList[i].setGoodsImg;//得到商品里的图片信息
+                            var setGoodsStyle=goodsList[i].setGoodsStyle;//得到商品里的格式信息
+                            goods.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                                goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                                goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                            // goodsComment:goodsComment[i]!=null?goodsComment[i]:0
+                        }
+                        for(var i=0;i<goodsList.length&&i<6;i++){
+                            var setGoodsImg=goodsList[i].setGoodsImg;
+                            var setGoodsStyle=goodsList[i].setGoodsStyle;
+                            goodsSelect.imgs.push({goodsimgUrl:"images/"+setGoodsImg[0].goodsimgUrl,
+                                goodsstylePrice:setGoodsStyle[0].goodsstylePrice,
+                                goodsNote1:goodsList[i].goodsNote1,goodsComment:goodsComment[i]!=null?goodsComment[i]:0});
+                        }
+                        for(var i=0;i<page;i++){
+                            goods.fenyes.push({page:i+1});
+                        }
+                    }
+                });
+            }
+        });
     </script>
     <script src="js/vue.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
@@ -309,11 +368,11 @@
                         <li>价格 <div class="body2right_1_img"></div></li>
                     </ul>
                     <img src="images/zhuxingtu.png">
-                    <div id="next_page">></div>
-                    <div id="pre_page"><</div>
+                    <div id="next_page" @click="nextPage">></div>
+                    <div id="pre_page" @click="prePage"><</div>
                     <div id="body2right_1_pageNumber">
-                        <span>共？件商品</span>
-                        <span><b>1</b>/?</span>
+                        <span>共{{count}}件商品</span>
+                        <span><b>{{pageNum}}</b>/{{page}}</span>
                     </div>
                 </div>
                 <div id="body2right_2">
@@ -335,7 +394,7 @@
                         <li><input type="checkbox">新品</li>
                     </ul>
                     <div id="body2right_2_search">
-                        <input type="text"><input type="button" value="确定">
+                        <input type="text" placeholder="请输入商品信息" v-model="goodsInfo"><input type="button" value="确定" @click="findSearch">
                     </div>
                 </div>
                 <div id="body2right_3">
@@ -365,18 +424,12 @@
                     <!--</div>-->
                     <div id="body2right_3_zuihou">
                         <div id="fenye">
-                            <a href="#">上一页</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">7</a>
-                            <a href="#">8</a>
-                            <a href="#">下一页</a>
-                            <span>共100页</span>
-                            <span>到第<input type="text" size="1px">页</span><input type="button" value="确定">
+                            <a @click="prePage">上一页</a>
+                            <!--v-bind:id="pageNum === index+1 ? 'fenye_red' : ''"-->
+                            <a v-for="(fenye,index) in fenyes" v-bind:id="pageNum === index+1 ? 'fenye_red' : ''" @click="fenyePage(index)">{{fenye.page}}</a>
+                            <a @click="nextPage">下一页</a>
+                            <span>共{{page}}页</span>
+                            <span>到第<input type="text" size="1px" v-model="pageNum">页</span><input type="button" value="确定" @click="fenyeJump">
                         </div>
                     </div>
                 </div>

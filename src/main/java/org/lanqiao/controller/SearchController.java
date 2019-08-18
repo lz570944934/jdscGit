@@ -26,24 +26,35 @@ public class SearchController {
         return searchService.getGoods();
     }
 
-    @RequestMapping("/searchgoods")
-    public Map searchGoods(){
-        List<Goods> goodsList=searchService.searchGoods();
-        List<Integer> goodsComment=searchService.goodsCommentCount();
-        Map map= new HashMap();
-        map.put("goodsComment",goodsComment);
-        map.put("goodsList",goodsList);
-        return map;
-    }
+//    @RequestMapping("/searchgoods")
+//    public Map searchGoods(){
+//        List<Goods> goodsList=searchService.searchGoods();
+//        List<Integer> goodsComment=searchService.goodsCommentCount();
+//        Map map= new HashMap();
+//        map.put("goodsComment",goodsComment);
+//        map.put("goodsList",goodsList);
+//        return map;
+//    }
 
     @RequestMapping("/searchgoodspage")
-    public Map searchGoodspage(int pageNum,int pageSize){
-        List<Goods> goodsList=searchService.searchGoods();
-        List<Integer> goodsComment=searchService.goodsCommentCount();
+    public Map searchGoodspage(Integer pageNum,Integer pageSize,String goodsInfo){
+//        pageNum=1;
+//        pageSize=8;
+//        goodsInfo="鞋子";
+        List<Goods> goodsList=searchService.searchGoods(pageNum,pageSize,goodsInfo);
+        List<Integer> goodsComment=searchService.goodsCommentCount(pageNum,pageSize,goodsInfo);
+        int goodsCount=searchService.goodsCount(goodsInfo);
+        int page=(goodsCount%pageSize==0?goodsCount/pageSize:goodsCount/pageSize+1);
         Map map= new HashMap();
-        map.put("goodsComment",goodsComment);
-        map.put("goodsList",goodsList);
+        map.put("goodsComment",goodsComment);//评论数量
+        map.put("goodsList",goodsList);//商品信息
+        map.put("goodsCount",goodsCount);//商品数量
+        map.put("page",page);//页数
         return map;
     }
 
+    @RequestMapping("/findgoodspage")
+    public List<Goods> find(String goodsInfo){
+        return searchService.find(goodsInfo);
+    }
 }
