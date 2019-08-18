@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东-欢迎登录</title>
+    <link rel="icon" type="text/css" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/jquery-3.4.1.js"></script>
+
+    <script>
+        $(function () {
+            $(".login-btn").click(function () {
+
+                $.ajax({
+                    url:"http://localhost:8080/login",
+                    type:"post",
+                    data:{'userName':$("input[type='text']").val(),"userPass":$("input[type='password']").val()},
+                    datatype:"json",
+                    success : function (data){
+                        if (data==true) {
+                            alert("点击成功")
+                            window.location.href="index.html"
+                        }
+                        else{
+                            window.location.href="login.html"
+                        }
+                    }
+
+
+
+                })
+
+
+            })
+
+        })
+    </script>
+
+
+</head>
+<body>
+<div class="w">
+    <div id="logo">
+        <a href="https://www.jd.com/">
+            <img src="images/longinlogin.png" alt="京东" >
+        </a>
+        <b id="welcome"></b>
+
+
+    </div>
+    <a href="//surveys.jd.com/index.php?r=survey/index/sid/568245/lang/zh-Hans" target="_blank" class="q-link">
+        <b></b>
+        登录页面，调查问卷
+    </a>
+
+</div>
+<div id="content">
+    <div class="tips-wrapper">
+        <div class="tips-inner">
+            <div class="cont-wrapper"><i class="icon-tips">
+
+            </i>
+                <p>依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版<a href="https://about.jd.com/privacy/" class="black" target="_blank">《京东隐私政策》</a>已上线，将更有利于保护您的个人隐私。</p></div>
+        </div>
+    </div>
+    <div class="login-wrap">
+        <div class="w">
+            <div class="login-form">
+                <div class="tips-wrapper">
+                    <div class="tips-inner">
+                        <div class="cont-wrapper">
+                            <i class="icon-tips"></i>
+                            <p>京东不会以任何理由要求您转账汇款，谨防诈骗。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-tab login-tab-l">
+                    <a href="javascript:void(0)" clstag="pageclick|keycount|login_pc_201804112|9" class="checked" style="outline: rgb(109, 109, 109) none 0px;"> 扫码登录</a>
+                </div>
+                <div class="login-tab login-tab-r">
+                    <a href="javascript:void(0)" clstag="pageclick|keycount|login_pc_201804112|10">账户登录</a>
+                </div>
+                <div class="login-box" >
+                    <div class="mt tab-h">
+                    </div>
+                    <div class="msg-wrap">
+                        <div class="msg-error hide"><b></b></div>
+                    </div>
+                    <div class="form">
+
+                            <input id="login-name" type="text" placeholder="邮箱/用户名/密码">
+                           <input  id="login-pass" type="password" placeholder="密码">
+                        <div class="item item-fore4">
+                            <div class="safe">
+                                <span></span>
+                                <span class="forget-pw-safe">
+											<a href="//passport.jd.com/uc/links?tag=safe" class="" target="_blank" clstag="pageclick|keycount|login_pc_201804112|6" style="outline: rgb(109, 109, 109) none 0px;">忘记密码</a>
+										</span>
+                            </div>
+                        </div>
+                        <div class="item item-fore5">
+                            <div class="login-btn">
+                                <a href="javascript:;" class="btn-img btn-entry" id="loginsubmit" tabindex="6" clstag="pageclick|keycount|login_pc_201804112|12">
+                                    登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="login-banner" style="background-color: #e93854">
+            <div class="w">
+                <div id="banner-bg" clstag="pageclick|keycount|20150112ABD|46" class="i-inner" style="background: url(images/longin-BIG.png) 0px 0px no-repeat;background-color: #e93854">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="w"></div>
+<div class="w">
+    <div id="footer-2013">
+        <div class="links">
+            <a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx">
+                关于我们
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">
+                联系我们
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">
+                人才招聘
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">
+                商家入驻
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//www.jd.com/intro/service.aspx">
+                广告服务
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//app.jd.com/">
+                手机京东
+            </a>
+            |
+            <a target="_blank" href="//club.jd.com/links.aspx">
+                友情链接
+            </a>
+            |
+            <a target="_blank" href="//media.jd.com/">
+                销售联盟
+            </a>
+            |
+            <a href="//club.jd.com/" target="_blank">
+                京东社区
+            </a>
+            |
+            <a href="//gongyi.jd.com" target="_blank">
+                京东公益
+            </a>
+            |
+            <a target="_blank" href="//en.jd.com/" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+        </div>
+        <div class="copyright">
+            Copyright&nbsp;©&nbsp;2004-2019&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

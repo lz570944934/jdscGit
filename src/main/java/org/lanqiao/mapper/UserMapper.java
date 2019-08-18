@@ -2,6 +2,8 @@ package org.lanqiao.mapper;
 
 import org.lanqiao.entity.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -14,4 +16,5 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    public List<User> checkUser(String userName,String userPass);
 }

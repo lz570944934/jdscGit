@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.User" >
+  <resultMap id="UserResultMap" type="org.lanqiao.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
-    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="INTEGER" />
     <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
     <result column="user_balance" property="userBalance" jdbcType="INTEGER" />
     <result column="user_head" property="userHead" jdbcType="VARCHAR" />
@@ -14,22 +14,25 @@
   <sql id="Base_Column_List" >
     user_id, user_name, user_pass, user_phone, user_email, user_balance, user_head, user_level
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where user_id = #{userId,jdbcType=INTEGER}
+  <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+  <!--    select-->
+  <!--    <include refid="Base_Column_List" />-->
+  <!--    from user-->
+  <!--    where user_id = #{userId,jdbcType=INTEGER}-->
+  <!--  </select>-->
+  <select id="checkUser" resultMap="UserResultMap"  parameterType="java.lang.String">
+    select * from user where user_name = #{userName} and user_pass = #{userPass}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.User" >
-    insert into user (user_id, user_name, user_pass, 
-      user_phone, user_email, user_balance, 
+    insert into user (user_id, user_name,
+      user_phone, user_email, user_balance,
       user_head, user_level)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
-      #{userPhone,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userBalance,jdbcType=INTEGER}, 
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR},
+      #{userPhone,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, #{userBalance,jdbcType=INTEGER},
       #{userHead,jdbcType=VARCHAR}, #{userLevel,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.User" >
@@ -71,7 +74,7 @@
         #{userPass,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null" >
-        #{userPhone,jdbcType=VARCHAR},
+        #{userPhone,jdbcType=INTEGER},
       </if>
       <if test="userEmail != null" >
         #{userEmail,jdbcType=VARCHAR},
@@ -97,7 +100,7 @@
         user_pass = #{userPass,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null" >
-        user_phone = #{userPhone,jdbcType=VARCHAR},
+        user_phone = #{userPhone,jdbcType=INTEGER},
       </if>
       <if test="userEmail != null" >
         user_email = #{userEmail,jdbcType=VARCHAR},
@@ -118,7 +121,7 @@
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_pass = #{userPass,jdbcType=VARCHAR},
-      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=INTEGER},
       user_email = #{userEmail,jdbcType=VARCHAR},
       user_balance = #{userBalance,jdbcType=INTEGER},
       user_head = #{userHead,jdbcType=VARCHAR},

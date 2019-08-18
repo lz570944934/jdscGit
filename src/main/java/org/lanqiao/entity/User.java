@@ -80,4 +80,18 @@ public class User {
     public void setUserLevel(Integer userLevel) {
         this.userLevel = userLevel;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPass='" + userPass + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userBalance=" + userBalance +
+                ", userHead='" + userHead + '\'' +
+                ", userLevel=" + userLevel +
+                '}';
+    }
 }

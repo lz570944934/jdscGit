@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
-#  mapper-locations: classpath:mapping/*Mapper.xml
+  mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: org.lanqiao.entity
 
 #showSql
