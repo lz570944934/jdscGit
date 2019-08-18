@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class test {
+public class Usercontroller {
     @Autowired
     private UserService userService;
     private UserMapper  userMapper;
@@ -35,7 +35,7 @@ public class test {
         System.out.println(user.getUserPass());
         boolean temp = userService.checkUser(user);
         System.out.print(temp);
-        if (temp==true) {
+        if (temp==true) {//判断返回值
             Cookie cookie = new Cookie("userName", user.getUserName());
             cookie.setPath("/");
             response.addCookie(cookie);
