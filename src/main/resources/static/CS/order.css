@@ -29,7 +29,7 @@
     height: 42px;
     background-size: 134px 42px;
     text-indent: -20000px;
-    background: url("../images/jdlogo2014.png") no-repeat 0 0;
+    background: url("../image/jdlogo2014.png") no-repeat 0 0;
 }
 
 #link2 {
@@ -52,7 +52,7 @@
     line-height: 99em;
     top: 8px;
     right: 0;
-    background: url("../images/purchase.png") #fff no-repeat;
+    background: url("../image/purchase.png") #fff no-repeat;
 }
 
 .stepflex {
@@ -98,7 +98,7 @@
     font-weight: 700;
     width: 23px;
     height: 23px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     line-height: 23px;
 }
 
@@ -115,7 +115,7 @@
     line-height: 0;
     font-size: 0;
     top: -5px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     overflow: hidden;
     left: 0;
 }
@@ -133,7 +133,7 @@
     font-weight: 700;
     width: 23px;
     height: 23px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     line-height: 23px;
     background-position: -23px 0;
 }
@@ -151,7 +151,7 @@
     line-height: 0;
     font-size: 0;
     top: -5px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     overflow: hidden;
     left: 0;
 }
@@ -165,7 +165,7 @@
     line-height: 0;
     font-size: 0;
     top: -5px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     overflow: hidden;
     right: 0;
 }
@@ -177,7 +177,7 @@
     font-weight: 700;
     width: 23px;
     height: 23px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     line-height: 23px;
 }
 
@@ -196,7 +196,7 @@
     line-height: 0;
     font-size: 0;
     top: -5px;
-    background-image: url("../images/step2013.png");
+    background-image: url("../image/step2013.png");
     overflow: hidden;
     right: 0;
 }
@@ -285,7 +285,7 @@
     width: 12px;
     height: 12px;
     overflow: hidden;
-    background: url("../images/selected-icon.png") no-repeat;
+    background: url("../image/selected-icon.png") no-repeat;
 }
 
 .selected {
@@ -397,7 +397,7 @@
     width: 12px;
     height: 12px;
     overflow: hidden;
-    background: url("../images/selected-icon.png") no-repeat;
+    background: url("../image/selected-icon.png") no-repeat;
     font-weight: bold;
 }
 
@@ -430,7 +430,7 @@
     line-height: 10px;
     width: 9px;
     margin-left: 5px;
-    background: url("../images/pay-i.png") no-repeat 0 0;
+    background: url("../image/pay-i.png") no-repeat 0 0;
 }
 
 .order-summary {
@@ -489,7 +489,7 @@
     width: 26px;
     height: 18px;
     vertical-align: middle;
-    background: url("../images/freight-icon.png") center top no-repeat;
+    background: url("../image/freight-icon.png") center top no-repeat;
 }
 
 .list span {
@@ -580,7 +580,7 @@
     top: 0;
     width: 135px;
     height: 36px;
-    background: url("../images/btn-submit.jpg") no-repeat;
+    background: url("../image/btn-submit.jpg") no-repeat;
     cursor: pointer;
     overflow: hidden;
 }
@@ -590,7 +590,7 @@
     display: inline-block;
     vertical-align: middle;
     height: 20px;
-    background: url("../images/presale-icon.png") 4px 0 no-repeat;
+    background: url("../image/presale-icon.png") 4px 0 no-repeat;
     line-height: 20px;
     margin-right: 27px;
     color: #005ea7;
@@ -622,7 +622,7 @@
     position: relative;
     float: left;
     width: 100%;
-    background: url("../images/shopping-list-bg.jpg") 0 0 repeat-y;
+    background: url("../image/shopping-list-bg.jpg") 0 0 repeat-y;
     margin-bottom: 10px;
 }
 
@@ -772,7 +772,7 @@
     height: 18px;
     margin: 0 5px 0 0;
     overflow: hidden;
-    background: url("../images/201705.png") no-repeat;
+    background: url("../image/201705.png") no-repeat;
     vertical-align: middle;
     background-position: 0 -84px;
 }
@@ -842,7 +842,7 @@
     height: 16px;
     line-height: 16px;
     margin-right: 5px;
-    background-image: url("../images/promise.png");
+    background-image: url("../image/promise.png");
     background-repeat: no-repeat;
     vertical-align: middle;
 }
@@ -903,7 +903,7 @@
     width: 12px;
     height: 12px;
     overflow: hidden;
-    background: url("../images/selected-icon.png") no-repeat;
+    background: url("../image/selected-icon.png") no-repeat;
 }
 
 #promise-ico {
@@ -918,7 +918,7 @@
     width: 59px;
     line-height: 16px;
     margin-right: -4px;
-    background-image: url("../images/promise.png");
+    background-image: url("../image/promise.png");
     background-repeat: no-repeat;
     vertical-align: middle;
 }
@@ -944,7 +944,7 @@
     width: 9px;
     height: 17px;
     vertical-align: middle;
-    background: url("../images/arrow-left.png") 0 0 no-repeat;
+    background: url("../image/arrow-left.png") 0 0 no-repeat;
 }
 
 .new-white span {
@@ -996,7 +996,7 @@
     width: 14px;
     height: 8px;
     cursor: pointer;
-    background: url("../images/arrow-down.png");
+    background: url("../image/arrow-down.png");
 }
 
 .step-content {

@@ -1,5 +1,5 @@
 package org.lanqiao.entity;
-
+//.,
 import java.util.Set;
 
 public class Brand {

@@ -209,12 +209,12 @@
     float: right;
     width: 7px;
     height: 21px;
-    background: url("../images/sprite-arrow.png") no-repeat 0 -100px;
+    background: url("../image/sprite-arrow.png") no-repeat 0 -100px;
     margin-top: 7px;
     margin-right: 10px;
 }
 .whiteimg{
-    background: url("../images/sprite-arrow.png") no-repeat 0 -119px;
+    background: url("../image/sprite-arrow.png") no-repeat 0 -119px;
 }
 #body2right_1 img{
     margin-left: 15px;
@@ -324,7 +324,7 @@
 #body2right_3_shangpin_gouwuche1{
     margin-left: 4px;
     margin-top: 6px;
-    background: url("../images/shangpinggouwuche.png") no-repeat 9999px 9999px;
+    background: url("../image/shangpinggouwuche.png") no-repeat 9999px 9999px;
     display: inline-block;
     height: 15px;
     width: 15px;
@@ -341,7 +341,7 @@
 #body2right_3_shangpin_gouwuche2{
     margin-left: 4px;
     margin-top: 7px;
-    background: url("../images/shangpinggouwuche.png")  9989px 996px;
+    background: url("../image/shangpinggouwuche.png")  9989px 996px;
     height: 15px;
     width: 15px;
     background-color: #fff;
@@ -351,7 +351,7 @@
 #body2right_3_shangpin_gouwuche3{
     margin-left: 4px;
     margin-top: 4px;
-    background: url("../images/shangpinggouwuche.png")  9989px 1140px;
+    background: url("../image/shangpinggouwuche.png")  9989px 1140px;
     height: 21px;
     width: 21px;
     background-color: #fff;

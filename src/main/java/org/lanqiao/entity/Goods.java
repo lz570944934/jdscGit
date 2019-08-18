@@ -21,9 +21,6 @@ public class Goods {
     private String goodsNote1;
     private String goodsNote2;
 
-    private String goodsNote1;
-
-    private String goodsNote2;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -49,21 +46,6 @@ public class Goods {
         this.goodsNumber = goodsNumber;
     }
 
-    public String getGoodsNote1() {
-        return goodsNote1;
-    }
-
-    public void setGoodsNote1(String goodsNote1) {
-        this.goodsNote1 = goodsNote1;
-    }
-
-    public String getGoodsNote2() {
-        return goodsNote2;
-    }
-
-    public void setGoodsNote2(String goodsNote2) {
-        this.goodsNote2 = goodsNote2;
-    }
 
     //    public Integer getClassifyId() {
 //        return classifyId;
