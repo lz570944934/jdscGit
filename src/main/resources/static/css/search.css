@@ -368,11 +368,14 @@
     float: right;
     margin-top: 10px;
 }
+#fenye_red{
+    color: red;
+}
 #fenye a{
     text-decoration: none;
     border:1px solid #ddd;
     padding: 5px 7px;
-    color: #767675;
+    /*color: #767675;*/
     cursor: pointer;
     background-color: #f7f7f7;
 }
